@@ -1,6 +1,5 @@
 window.onload=function(){ 	
 VK.init(function() {
-     post()
   }, function() {
      alert("NO");
 }, '5.95');
