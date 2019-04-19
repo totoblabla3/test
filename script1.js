@@ -8,4 +8,12 @@ VK.init(function() {
 function post(){
 VK.api("wall.post", {"message": "Hello!", "v":"5.73"}, function (data) {
     alert("Post ID:" + data.response.post_id); 
-});}
+});
+}
+
+function title1(){
+VK.callMethod('showAppWidgetPreviewBox', 'text', 'return {\
+    "title": "Привет",\
+    "text": "Я родился"\
+};');
+}
