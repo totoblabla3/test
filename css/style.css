@@ -1,0 +1,20 @@
+body{
+	background-color: #FFFFFF;
+}
+.button {
+  color: #111111;
+  text-decoration: none;
+  user-select: none;
+  font-family: arial,sans-serif;
+  background: #F2F2F2;
+  padding: .2em 1em;
+  border: 1px solid #DBDBDB;
+  border-radius: 1px;
+
+} 
+.button:hover { background: #EAEAEA; } 
+.button:active { background: #F2F2F2; } 
+
+#button1{
+	
+}
