@@ -15,7 +15,7 @@ VK.api("wall.post", {"message": "Hello!", "v":"5.73"}, function (data) {
 
 function title1(){
 VK.callMethod('showAppWidgetPreviewBox', 'text', 'return {\
-    "title": "Толик",\
-    "text": "ТОЛИК ЕБОЛИК, ПЕРВЫЙ ДЕНЬ БЛЯТЬ"\
+    "title": "Привет",\
+    "text": "Я родился"\
 };');
 }
