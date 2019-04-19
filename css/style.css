@@ -5,6 +5,7 @@ body{
   color: #111111;
   text-decoration: none;
   user-select: none;
+  -moz-user-select: -moz-none;
   font-family: arial,sans-serif;
   background: #F2F2F2;
   padding: .2em 1em;
