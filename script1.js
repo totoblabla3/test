@@ -1,8 +1,10 @@
 window.onload=function(){ 
 
 VK.init(function() {
-	while (true) {
+	var i = 0;
+	while (i<10) {
 		setTimeout(title1(), 4000);
+		i++
 	}
   }, function() {
      alert("NO");
