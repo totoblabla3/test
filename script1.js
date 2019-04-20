@@ -23,12 +23,13 @@ function title1(){
 
  function title1update(){
 
- VK.api("appWidgets.update",{
-    "title": "Привет",
-    "text": "qq"//new Date(),
-} , 'text' ,function (data) {})
-
-}
+ VK.api("appWidgets.update",'{\
+    "title": "Привет",\
+    "text": "qq",\
+}' , 'text' ,function (data) {\
+	document.getelementbyid("text1").textContent=data.response
+})
+}  ////new Date()
 
 //if (toi>i) {
 	//setTimeout(title1update(), 11000);
