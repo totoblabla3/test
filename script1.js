@@ -23,16 +23,16 @@ function title1(){
 
  function title1update(){
 
- VK.api("appWidgets.update", {
+ VK.api("appWidgets.update", 'text', {
     "title": "Привет",
-    "text": new Date(),
+    "text": "qq",//new Date(),
     "v":"5.73"
-}, 'text' ,function (data) {alert(data.response)});
+} ,function (data) {alert(data.response)});
 
-if (toi>i) {
-	setTimeout(title1update(), 11000);
-		i++	
-	}
+//if (toi>i) {
+	//setTimeout(title1update(), 11000);
+//		i++	
+	//}
 }
 
 //VK.api("wall.post", {"message": "Hello!", "v":"5.73"}, function (data) {
