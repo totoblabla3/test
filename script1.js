@@ -23,6 +23,8 @@ function title1(){
     "title": "Привет",\
     "text": "'+new Date()+'"\
 };');
+VK.callMethod("showGroupSettingsBox", 64);
+}
 
  function title1update(){
  VK.callMethod('appWidgets.update', 'text', 'return {\
