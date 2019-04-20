@@ -24,10 +24,7 @@ function title1(){
 
  function title1update(){
 
- VK.api("appWidgets.update",'{\
-    "title": "Привет",\
-    "text": "qq",\
-}' , 'text' ,function (data) {
+ VK.api("appWidgets.update", {"title": "Привет","text": "qq", "v":"5.73"}, 'text' ,function (data) {
 	document.getElementById("text1").textContent=data.response
 })
 }  ////new Date()
