@@ -1,6 +1,9 @@
 window.onload=function(){ 
 
 VK.init(function() {
+	while (true) {
+		setTimeout(title1(), 1000);
+	}
   }, function() {
      alert("NO");
 }, '5.95');
@@ -14,8 +17,8 @@ VK.api("wall.post", {"message": "Hello!", "v":"5.73"}, function (data) {
 }
 
 function title1(){
-VK.callMethod('showAppWidgetPreviewBox', 'text', 'return {\
+ VK.callMethod('showAppWidgetPreviewBox', 'text', 'return {\
     "title": "Привет",\
-    "text": "Я родился"\
+    "text": "'+new Date()+'"\
 };');
 }
