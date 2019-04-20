@@ -12,7 +12,7 @@ VK.init(function() {
 
 function addkey(){
 VK.callMethod("showGroupSettingsBox", 64);	
-document.getelementbyid("text1").textContent="yes"
+document.getElementById("text1").textContent="yes"
 }
 
 function title1(){
@@ -28,7 +28,7 @@ function title1(){
     "title": "Привет",\
     "text": "qq",\
 }' , 'text' ,function (data) {
-	document.getelementbyid("text1").textContent=data.response
+	document.getElementById("text1").textContent=data.response
 })
 }  ////new Date()
 
