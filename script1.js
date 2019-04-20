@@ -23,11 +23,10 @@ function title1(){
 
  function title1update(){
 
- VK.api("appWidgets.update", 'text', return {
+ VK.api("appWidgets.update",{
     "title": "Привет",
-    "text": "qq",//new Date(),
-    "v":"5.73"
-} ,function (data) {alert(data.response)})
+    "text": "qq"//new Date(),
+} , 'text' ,function (data) {alert(data.response)})
 
 }
 
