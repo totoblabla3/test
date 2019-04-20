@@ -12,6 +12,7 @@ VK.init(function() {
 
 function addkey(){
 VK.callMethod("showGroupSettingsBox", 64);	
+document.getelementbyid("text1").textContent="yes"
 }
 
 function title1(){
