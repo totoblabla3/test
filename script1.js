@@ -26,7 +26,7 @@ function title1(){
  VK.api("appWidgets.update",'{\
     "title": "Привет",\
     "text": "qq",\
-}' , 'text' ,function (data) {\
+}' , 'text' ,function (data) {
 	document.getelementbyid("text1").textContent=data.response
 })
 }  ////new Date()
