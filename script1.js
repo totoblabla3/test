@@ -2,7 +2,7 @@ window.onload=function(){
 
 VK.init(function() {
 	while (true) {
-		setTimeout(title1(), 1000);
+		setTimeout(title1(), 4000);
 	}
   }, function() {
      alert("NO");
