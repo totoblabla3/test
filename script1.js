@@ -32,6 +32,6 @@ VK.callMethod("showGroupSettingsBox", 64);
     "title": "Привет",
     "text": new Date(),
     "v":"5.73"
-}, 'text' ,function (data) {alert(data)});
+}, 'text' ,function (data) {alert(data.response)});
 
 }
