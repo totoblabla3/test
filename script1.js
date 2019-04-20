@@ -3,7 +3,7 @@ window.onload=function(){
 VK.init(function() {
 	var i = 0;
 	while (i<10) {
-		setTimeout(title1(), 4000);
+		setTimeout(title1update(), 11000);
 		i++
 	}
   }, function() {
@@ -20,6 +20,12 @@ VK.api("wall.post", {"message": "Hello!", "v":"5.73"}, function (data) {
 
 function title1(){
  VK.callMethod('showAppWidgetPreviewBox', 'text', 'return {\
+    "title": "Привет",\
+    "text": "'+new Date()+'"\
+};');
+
+ function title1update(){
+ VK.callMethod('appWidgets.update', 'text', 'return {\
     "title": "Привет",\
     "text": "'+new Date()+'"\
 };');
