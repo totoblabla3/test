@@ -1,3 +1,5 @@
+var i = 0;
+var toi =10;
 window.onload=function(){ 
 
 VK.init(function() {
@@ -6,14 +8,6 @@ VK.init(function() {
      alert("NO");
 }, '5.95');
 
-}
-
-function tupdateloop(){
-var i = 0;
-	while (i<10) {
-		setTimeout(title1update(), 11000);
-		i++
-	}
 }
 
 function addkey(){
@@ -35,6 +29,10 @@ function title1(){
     "v":"5.73"
 }, 'text' ,function (data) {alert(data.response)});
 
+if (toi>i) {
+	setTimeout(title1update(), 11000);
+		i++	
+	}
 }
 
 //VK.api("wall.post", {"message": "Hello!", "v":"5.73"}, function (data) {
