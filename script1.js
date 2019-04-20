@@ -27,8 +27,10 @@ VK.callMethod("showGroupSettingsBox", 64);
 }
 
  function title1update(){
- VK.callMethod('appWidgets.update', 'text', 'return {\
+
+ VK.api("appWidgets.update", {
     "title": "Привет",\
-    "text": "'+new Date()+'"\
-};');
+    "text": new Date(),
+}, 'text' ,function (data) {});
+
 }
