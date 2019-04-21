@@ -20,5 +20,4 @@ server.on('request', (req, res) => {
  
 
 });
-
-server.listen(25565, '5.19.190.70', function () {console.log("Сервер работает")});
+server.listen(process.env.PORT); 
