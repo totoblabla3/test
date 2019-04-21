@@ -28,7 +28,7 @@ function title1(){
 
  function title1update(){
 
- VK.api("appWidgets.update", {"title": "Привет","text": "qq", "type": "text", "v":"5.73" "access_token":token} ,function (data) {
+ VK.api("appWidgets.update", {"title": "Привет","text": "qq", "type": "text", "v":"5.73" "access_token":+token} ,function (data) {
 	document.getElementById("text1").textContent=data.error.error_msg
 })
 }  ////new Date()
