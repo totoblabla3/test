@@ -1,25 +1,17 @@
-const http =require('http')
-const fs =require('fs')
-const server = http.createServer();
+var express = require('express');
+var app = express();
 
-server.on('request', (req, res) => {
-
-	console.log(req.url);
-	console.log(req.method);
-	console.log(req.headers);
- if (req.url === '/index' || req.url === '/') {
- res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})	
- var readhtml =fs.createReadStream(__dirname + '/index.html', 'utf8')
- readhtml.pipe(res) 
-} else {
-	
- res.writeHead(404, {'Content-Type': 'text/html; charset=utf-8'})	
- var readhtml =fs.createReadStream(__dirname + '/404.html', 'utf8')
- readhtml.pipe(res) 
-}
- 
-
+app.get('/', function(req, res){
+    res.sendFile (__dirname + "/index.html");
 });
- server.listen(process.env.PORT); 
-//server.listen(3000, function () {console.log("Сервер работает")}); 
+
+app.get('/:id', function(req, res){
+    res.send ('ID is -' + req.params.id);
+});
+
+
+app.listen(process.env.PORT); 
+//app.listen(3000);
 //http://localhost:3000/
+
+
