@@ -11,9 +11,11 @@ VK.init(function() {
 }
 
 function addkey(){
-VK.callMethod("showGroupSettingsBox", 64);	
+VK.callMethod("showGroupSettingsBox", 64), function() {
+VK.callMethod("showGroupSettingsBox", 4096), function() {
+}};	
 document.getElementById("text1").textContent="yes"
-}
+} 
 
 function title1(){
  VK.callMethod('showAppWidgetPreviewBox', 'text', 'return {\
