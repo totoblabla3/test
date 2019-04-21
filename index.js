@@ -8,8 +8,6 @@ server.on('request', (req, res) => {
 	console.log(req.method);
 	console.log(req.headers);
  if (req.url === '/index' || req.url === '/') {
- 	
-
  res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})	
  var readhtml =fs.createReadStream(__dirname + '/index.html', 'utf8')
  readhtml.pipe(res) 
