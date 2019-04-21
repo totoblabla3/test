@@ -13,14 +13,6 @@ server.on('request', (req, res) => {
  res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})	
  var readhtml =fs.createReadStream(__dirname + '/index.html', 'utf8')
  readhtml.pipe(res) 
-
- res.writeHead(200, {'Content-Type': 'text/css; charset=utf-8'})	
- var readhtml =fs.createReadStream(__dirname + '/css/style.css', 'utf8')
- readhtml.pipe(res) 
-
- res.writeHead(200, {'Content-Type': 'text/javascript; charset=utf-8'})	
- var readhtml =fs.createReadStream(__dirname + '/script1.js', 'utf8')
- readhtml.pipe(res) 
 } else {
 	
  res.writeHead(404, {'Content-Type': 'text/html; charset=utf-8'})	
