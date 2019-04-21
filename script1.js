@@ -1,5 +1,6 @@
 var i = 0;
 var toi =10;
+var token = "7bdfcd69418e3190f90ecacc59f0c84b6b97de8814a14c411b1ceadb9b9d1f893d5beff8ff9bb217fd735";
 window.onload=function(){ 
 
 VK.init(function() {
@@ -27,7 +28,7 @@ function title1(){
 
  function title1update(){
 
- VK.api("appWidgets.update", {"title": "Привет","text": "qq", "type": "text", "v":"5.73"} ,function (data) {
+ VK.api("appWidgets.update", {"title": "Привет","text": "qq", "type": "text", "v":"5.73" "token":"token"} ,function (data) {
 	document.getElementById("text1").textContent=data.error.error_msg
 })
 }  ////new Date()
