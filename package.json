@@ -1,8 +1,26 @@
 {
-  "name": "TopUser",
+  "name": "topuser",
   "description": "a really cool app",
   "version": "1.0.0",
   "engines": {
     "node": "10.15.3"
-  }
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/totoblabla3/test.git"
+  },
+  "author": "totoblabla3",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/totoblabla3/test/issues"
+  },
+  "homepage": "https://github.com/totoblabla3/test#readme"
 }
