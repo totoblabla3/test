@@ -25,8 +25,8 @@ app.post('/', urlencodedParser, function (req, res) {
 
 });
 
-//app.listen(process.env.PORT); 
-app.listen(3000);
+app.listen(process.env.PORT); 
+//app.listen(3000);
 //http://localhost:3000/
 //node index
 
