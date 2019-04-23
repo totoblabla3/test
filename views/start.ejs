@@ -7,20 +7,18 @@
     <script src="public/js/script1.js"type="text/javascript"></script>
   </head>
   <body>
-    <!-- <p><a class="button" id="button1" onclick="addkey()">Запустить мониторинг</a></p> -->
-
-    
-    <form id = "on" action="" method = "post" style = "display:none;"> 
-            <input type = "text" name = "status" value = "1">
-    </form>
-    <p><a class="button" id="button1" onclick = 'document.getElementById("on").submit();'>Включить мониторинг</a></p>
-    
-    <form id = "off" action="" method = "post" style = "display:none;"> 
-        <input type = "text" name = "status" value = "0">
-    </form>
-    <p><a class="button" id="button1" onclick = 'document.getElementById("off").submit();'>Отключить мониторинг</a></p>
-
-
-    <p><a>status: </a><a class="text" id="text1"><%= first %></a></p>
+        <table align= "center">
+            <caption>Топ участников сообщества</caption>
+            <tr>
+                <th>Место</th>
+                <th>Балл</th>
+                <th>Id участника</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>100</td>
+                <td>totoblabla</td>
+            </tr>
+        </table>
   </body>
 </html>
