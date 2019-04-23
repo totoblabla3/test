@@ -1,12 +1,12 @@
 body{
-	background-color: #EDEEF0;
+	background-color: #ffffff
 }
 
 table{
   font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
   font-size: 14px;
   background: white;
-  width: 70%;
+  width: 80%;
   border-collapse: collapse;
   text-align: center;
 }
