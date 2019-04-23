@@ -6,6 +6,9 @@
     "node": "10.15.3"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "easyvk": "^2.4.1",
+    "ejs": "^2.6.1",
     "express": "^4.16.4"
   },
   "main": "index.js",

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
+    <script src="public/js/script1.js"type="text/javascript"></script>
+  </head>
+  <body>
+    <!-- <p><a class="button" id="button1" onclick="addkey()">Запустить мониторинг</a></p> -->
+
+    
+    <form id = "on" action="" method = "post" style = "display:none;"> 
+            <input type = "text" name = "status" value = "1">
+    </form>
+    <p><a class="button" id="button1" onclick = 'document.getElementById("on").submit();'>Включить мониторинг</a></p>
+    
+    <form id = "off" action="" method = "post" style = "display:none;"> 
+        <input type = "text" name = "status" value = "0">
+    </form>
+    <p><a class="button" id="button1" onclick = 'document.getElementById("off").submit();'>Отключить мониторинг</a></p>
+
+
+    <p><a>status: </a><a class="text" id="text1"><%= first %></a></p>
+  </body>
+</html>

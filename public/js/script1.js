@@ -4,7 +4,7 @@ var token = "7bdfcd69418e3190f90ecacc59f0c84b6b97de8814a14c411b1ceadb9b9d1f893d5
 window.onload = function () {
 
    VK.init(function () {
-
+      alert("NO");
    }, function () {
       alert("NO");
    }, '5.95');
