@@ -12,8 +12,8 @@ app.get('/', function (req, res) {
     res.render('start');
 });
 
-//app.listen(process.env.PORT); 
-app.listen(3000);
+app.listen(process.env.PORT); 
+//app.listen(3000);
 //http://localhost:3000/
 //node index
 
