@@ -1,25 +1,19 @@
 var i = 0;
 var toi = 10;
-var token = "7bdfcd69418e3190f90ecacc59f0c84b6b97de8814a14c411b1ceadb9b9d1f893d5beff8ff9bb217fd735";
 window.onload = function () {
 
    VK.init(function () {
      // alert("NO");
    }, function () {
-      alert("NO login");
+      alert("NO logi");
    }, '5.95');
 
 }
 
 function addkey() {
-   VK.callMethod("showGroupSettingsBox", 64),
-      function () {
-         VK.callMethod("showGroupSettingsBox", 4096),
-            function () {
-               document.getElementById("text1").textContent = "yes";
-            }
-      };
 
+      VK.callMethod("showGroupSettingsBox", 4096);
+   
 }
 
 function title1() {
