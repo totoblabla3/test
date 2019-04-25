@@ -33,7 +33,7 @@ easyvk({
     startloop();
     function startloop() { 
       var date = new Date();
-      var dateready = date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()
+      var dateready = (date.getHours()+3)+":"+date.getMinutes()+":"+date.getSeconds()
       vk.call('appWidgets.update', {
         type: 'text',
         code: 'return { "title": "Hey", "text": "'+dateready+'"};'
