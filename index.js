@@ -29,7 +29,7 @@ easyvk({
   //  vk.call('execute', {
   //   code: 'API.'
   // }); 
-   // startloop();
+    startloop();
 
     function startloop() { 
      // var date = new Date();
