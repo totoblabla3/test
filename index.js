@@ -30,7 +30,7 @@ easyvk({
   //   code: 'API.'
   // }); 
     
-    startloop();
+    //startloop();
     function startloop() { 
       var date = new Date();
       var dateready = (date.getHours()+3)+":"+date.getMinutes()+":"+date.getSeconds()
