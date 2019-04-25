@@ -36,7 +36,7 @@ easyvk({
       var dateready = (date.getHours()+3)+":"+date.getMinutes()+":"+date.getSeconds()
       vk.call('appWidgets.update', {
         type: 'text',
-        code: 'return { "title": "Hey", "text": "'+dateready+'"};'
+        code: 'return { "title": "Hey", "text": "SPB '+dateready+'"};'
       });
       setTimeout(startloop, 11000);
     }
