@@ -35,7 +35,7 @@ easyvk({
       var date = new Date();
       vk.call('appWidgets.update', {
         type: 'text',
-        code: 'return { "title": "Hey", "text": "'+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()+'"};'
+        code: 'return { "title": "Hey", "text": "' +date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()+'"};'
       });
       setTimeout(startloop, 11000);
     }
