@@ -32,10 +32,10 @@ easyvk({
    // startloop();
 
     function startloop() { 
-      var date = new Date();
+     // var date = new Date();
       vk.call('appWidgets.update', {
         type: 'text',
-        code: 'return { "title": "Hey", "text": "' +date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()+'"};'
+        code: 'return { "title": "Hey", "text": "'+new Date().getHours()+":"+new Date().getMinutes()+":"+new Date().getSeconds()+'"};'
       });
       setTimeout(startloop, 11000);
     }
