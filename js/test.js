@@ -15,6 +15,7 @@ var parsloop = async function(){
 
     var startdate = new Date();
     var posts = await bd.PostsGet();
+    var Users = await bd.UsersGet();  
     var {good, clike} = await vk.CommentsGet(posts);
     var liker = await vk.PostLikesGet(posts,"post");
     liker = liker.concat(await vk.PostLikesGet(clike,"comment"));  
@@ -33,8 +34,7 @@ var parsloop = async function(){
     while (stateloop == 0){
         await sleep(100);
     }
-
-    var Users = await bd.UsersGet();   
+     
     for (let i = 0; i < Users.length; i++) {
         if ((Users[i].uid != "230224838") && (Users[i].uid != "233008659")){
             Users[i].balls = (likes[Users[i].uid] + (comments[Users[i].uid]*2)); 
@@ -58,7 +58,6 @@ var parsloop = async function(){
 
 var WidgetUptateLoop = async function(){
     
-
     for (let i = 0; i < 3; i++) {
         Top3[i] = TopUsers[i];   
     }
