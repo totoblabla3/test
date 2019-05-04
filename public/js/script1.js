@@ -9,5 +9,5 @@ window.onload = function () {
 }
 
 function addkey() {
-      VK.callMethod("showGroupSettingsBox", 0);
+      VK.callMethod("showGroupSettingsBox", 64);
 }
