@@ -6,7 +6,7 @@ const easyvk = require('easyvk');
 const bd = require("./js/bd.js");
 const vk = require("./js/vk.js"); 
 const pl = require("./js/test.js"); 
-console.dir ( ip.address() );
+console.dir ( ip.address()  );
 pl.start();
 
 var urlencodedParser = bodyParser.urlencoded({
