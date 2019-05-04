@@ -29,7 +29,7 @@
    // debug: myDebugger
   };
   var gauch = {    
-    access_token: 'd8357ad4cb7c39b3bc1994229a46cd30fd990e7024a947b941626ed73baff226fc1c74ecae62cf2e1119e',//'7bdfcd69418e3190f90ecacc59f0c84b6b97de8814a14c411b1ceadb9b9d1f893d5beff8ff9bb217fd735',
+    access_token: '2f65ab62e207d5d6f4465fc2361c43179848fe60d8a0d93260dc0f005bb1c4a6897f6e88ee998fc5b32e8',//'7bdfcd69418e3190f90ecacc59f0c84b6b97de8814a14c411b1ceadb9b9d1f893d5beff8ff9bb217fd735',
     api_v: '5.95',
     lang: ["ru"][0],
     //debug: myDebugger
