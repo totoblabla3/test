@@ -333,9 +333,9 @@
       var {vkr} = await vkgroup.call("appWidgets.update", {type:"tiles", code:'return{\
         title:"Рейтинг: Самые крутые ебаллы у них",\
         title_url:"https://vk.com/app6952969",\
-        tiles:[{title:"'+uids[0].name+'", link:"'+uids[0].balls+' ЕБаллов", link_url:"https://vk.com/app6952969_-65723219", icon_id:"id'+uids[0].uid+'", url:"https://vk.com/id'+uids[0].uid+'"},\
-               {title:"'+uids[1].name+'", link:"'+uids[1].balls+' ЕБаллов", link_url:"https://vk.com/app6952969_-65723219", icon_id:"id'+uids[1].uid+'", url:"https://vk.com/id'+uids[1].uid+'"},\
-               {title:"'+uids[2].name+'", link:"'+uids[2].balls+' ЕБаллов", link_url:"https://vk.com/app6952969_-65723219", icon_id:"id'+uids[2].uid+'", url:"https://vk.com/id'+uids[2].uid+'"}],\
+        tiles:[{title:"'+uids[0].name+'", link:"'+uids[0].balls+' ЕБаллов", link_url:"https://vk.com/tolchokgrigoreva?w=wall-65723219_13568", icon_id:"id'+uids[0].uid+'", url:"https://vk.com/id'+uids[0].uid+'"},\
+               {title:"'+uids[1].name+'", link:"'+uids[1].balls+' ЕБаллов", link_url:"https://vk.com/tolchokgrigoreva?w=wall-65723219_13568", icon_id:"id'+uids[1].uid+'", url:"https://vk.com/id'+uids[1].uid+'"},\
+               {title:"'+uids[2].name+'", link:"'+uids[2].balls+' ЕБаллов", link_url:"https://vk.com/tolchokgrigoreva?w=wall-65723219_13568", icon_id:"id'+uids[2].uid+'", url:"https://vk.com/id'+uids[2].uid+'"}],\
       };'});
       }catch(err){console.log("ERROR WidgetUpdate: "+err); await sleep(10000); WidgetUpdate(uids);return 0;}
       console.log("Виджет обновлен <======================\n") 
