@@ -8,29 +8,25 @@
   </head>
   <body>
         <!-- bg color #EDEEF0; -->
-        <a type = "button" onclick="addkey()">Разрешить доступ</a>
+        <!--<a type = "button" onclick="addkey()">Разрешить доступ</a>-->
         <table align= "center">
             <caption>Топ участников сообщества</caption>
             <tr>
                 <th>Место</th>
                 <th>Балл</th>
-                <th>ФИО участника</th>
+                <th>Участник</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>100</td>
-                <td>totoblabla</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>80</td>
-                <td>tolik</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>55</td>
-                <td>any</td>
-            </tr>
+            <ul>
+            <% users.forEach(function(users,i){ %>
+              <% if (users) { %>
+              <tr>
+                <td><%=i+1%></td>
+                <td><%= users.balls %></td>
+                <td><a href="https://vk.com/id<%= users.uid %>"><%= users.name %></a></td>
+              </tr>
+              <% } %>
+            <%}) %>
+          </ul>
         </table>
   </body>
 </html>

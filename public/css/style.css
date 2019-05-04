@@ -23,7 +23,11 @@ td {
   border-top: 1px solid #e8edff;
   padding: 3px 15px;
 }
-
+a{
+  color: rgb(92, 92, 146);
+  border-top: 1px solid #e8edff;
+  padding: 3px 15px;
+}
 caption{
   color: rgb(63, 63, 63)
 }

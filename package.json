@@ -10,7 +10,8 @@
     "easyvk": "^2.4.11",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
-    "mongoose": "^5.5.3"
+    "mongoose": "^5.5.4",
+    "util.promisify": "^1.0.0"
   },
   "main": "index.js",
   "devDependencies": {},
