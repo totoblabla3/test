@@ -1,10 +1,12 @@
 var express = require('express');
 var app = express();
+var ip = require("ip");
 var bodyParser = require('body-parser');
 const easyvk = require('easyvk');
 const bd = require("./js/bd.js");
 const vk = require("./js/vk.js"); 
 const pl = require("./js/test.js"); 
+console.dir ( ip.address() );
 pl.start();
 
 var urlencodedParser = bodyParser.urlencoded({
@@ -15,7 +17,7 @@ app.set('view engine', 'ejs');
 app.use('/public', express.static('public'));
 
 app.get('/', function (req, res) {
-  
+
   res.render('start',{users:pl.topuser()});
 });
 
