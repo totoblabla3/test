@@ -22,13 +22,6 @@
   });
 //========================================
 
-  var uauch = {
-    password: "Evas2003123456789",//"itsonlystart",
-    username: "89214192055",//"89119068924",
-    api_v: '5.95',
-    lang: ["ru"][0],
-    //debug: myDebugger
-  };
   var sauch = {
     access_token: 'd4526fbdd4526fbdd4526fbda7d43877b4dd452d4526fbd8892599a407521fd05d99a7a',
     api_v: '5.95',
@@ -36,19 +29,13 @@
    // debug: myDebugger
   };
   var gauch = {    
-    access_token: '7bdfcd69418e3190f90ecacc59f0c84b6b97de8814a14c411b1ceadb9b9d1f893d5beff8ff9bb217fd735',
+    access_token: 'ab91398ad01573532b763fb8ebcf96fa9c4af8f7ed73f746cdd7b8b67f261049f3cc65fcd1f9f95fcce6a',//'7bdfcd69418e3190f90ecacc59f0c84b6b97de8814a14c411b1ceadb9b9d1f893d5beff8ff9bb217fd735',
     api_v: '5.95',
     lang: ["ru"][0],
     //debug: myDebugger
   };
 
   var Auch = async function () {
-    // vkuser = await easyvk(uauch);
-    // if (!vkuser.session.hasOwnProperty("access_token")){
-    //   console.log('Vk_uauch, ошибка! '+vkuser.error);
-    //   await sleep(20000);
-    //   return await Auch();
-    // }
   
     vkgroup = await easyvk(gauch);
     if (!vkgroup.session.hasOwnProperty("group_id")){
