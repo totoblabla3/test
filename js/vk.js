@@ -64,7 +64,7 @@
       return await Auch();
     }
 
-    ownerid = "158989414";//vkgroup.session.group_id;//"65723219";
+    ownerid = "65723219";//vkgroup.session.group_id;//"65723219";
     return "VkAuch_ok"; 
   };
   var PostsGet = async function(){
@@ -344,14 +344,14 @@
 
     try{
       var {vkr} = await vkgroup.call("appWidgets.update", {type:"tiles", code:'return{\
-        title:"Наши самые активные участники!",\
+        title:"Рейтинг: Самые крутые ебаллы у них",\
         title_url:"https://vk.com/app6952969",\
         tiles:[{title:"'+uids[0].name+'", descr:"'+uids[0].balls+' Баллов", icon_id:"id'+uids[0].uid+'", url:"https://vk.com/id'+uids[0].uid+'"},\
                {title:"'+uids[1].name+'", descr:"'+uids[1].balls+' Баллов", icon_id:"id'+uids[1].uid+'", url:"https://vk.com/id'+uids[1].uid+'"},\
                {title:"'+uids[2].name+'", descr:"'+uids[2].balls+' Баллов", icon_id:"id'+uids[2].uid+'", url:"https://vk.com/id'+uids[2].uid+'"}],\
       };'});
       }catch(err){console.log("ERROR WidgetUpdate: "+err); await sleep(10000); WidgetUpdate(uids);return 0;}
-      console.log("Виджет обновлен") 
+      console.log("Виджет обновлен <======================\n") 
  
    }
 

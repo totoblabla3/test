@@ -5,7 +5,7 @@ const easyvk = require('easyvk');
 const bd = require("./js/bd.js");
 const vk = require("./js/vk.js"); 
 const pl = require("./js/test.js"); 
-pl.start();
+//pl.start();
 
 var urlencodedParser = bodyParser.urlencoded({
   extended: false
@@ -20,13 +20,13 @@ app.post('/', function (req, res) {
   const {body} = req;
   switch (body.type) {
     case 'confirmation':
-    res.end('ba2d09a1');
+    res.end('8d9c8073');
       break;
   
     default:
     console.log(body);
-    vk.PostsGet();
-    vk.UsersGet();
+   // vk.PostsGet();
+    //vk.UsersGet();
     res.end('ok');
       break;
   }
