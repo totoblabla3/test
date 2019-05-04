@@ -3,6 +3,8 @@ const vk = require("./vk.js"); //Auch  PostsGet  UsersGet  LikesGet(itemid)  Com
 const sleep = require('util').promisify(setTimeout);
 var stateloop = 1;
 var TopUsers = [];
+var Top3 = [];
+var Top3old = [];
 
 var parsloopstate = function(state){stateloop = state;};
 
@@ -55,12 +57,17 @@ var parsloop = async function(){
 };
 
 var WidgetUptateLoop = async function(){
-    var Top3 = [];
+    
 
     for (let i = 0; i < 3; i++) {
         Top3[i] = TopUsers[i];   
     }
-    await vk.WidgetUpdate(Top3);
+    
+    if (Top3old !== Top3){
+        await vk.WidgetUpdate(Top3);
+        Top3old = Top3;
+    }
+    
     await sleep(10000);
     WidgetUptateLoop();
     return 0;
