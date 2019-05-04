@@ -44,13 +44,13 @@ var parsloop = async function(){
     for (let i = 0; i < (50 || Users.length); i++) {
         tu[i] = Users[i];  
     }
+    bd.newtopuser(tu);
     TopUsers = tu;
-    
     console.log(date.getHours()+":"+date.getMinutes()+":"+date.getSeconds());
     console.log("Итерация заняла: "+((date-startdate)/1000)+" сек");
     console.log("Комментарии: "+good.length);
     console.log("Лайки: "+liker.length+"\n");
-   // parsloop();
+    parsloop();
     return 0;
 };
 
@@ -80,4 +80,3 @@ WidgetUptateLoop();
 
 module.exports.parsloop = parsloopstate;
 module.exports.start = start;
-module.exports.topuser = function(){return TopUsers;};

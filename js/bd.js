@@ -1,6 +1,7 @@
 
 const mongoose = require("mongoose");
 const Scheme = require("./MongoScheme.js");
+var TopUsers = [];
 
 var Auch = async function(){
   await mongoose.connect("mongodb+srv://totoblabla:703123456789@topuser-llqlx.gcp.mongodb.net/test?retryWrites=true", { useNewUrlParser: true });
@@ -33,7 +34,8 @@ module.exports.PostsGet = PostsGet;
 module.exports.UsersGet = UsersGet;
 module.exports.UsersRewrite = UsersRewrite;
 module.exports.PostsRewrite = PostsRewrite;
-
+module.exports.newtopuser = function(newtop){TopUsers = newtop;};
+module.exports.topuser = function(){return TopUsers;};
 
 
 
