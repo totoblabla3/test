@@ -11,12 +11,26 @@ var urlencodedParser = bodyParser.urlencoded({
   extended: false
 });
 
+app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 app.use('/public', express.static('public'));
 
 app.post('/', function (req, res) {
-  console.log(req);
-  res.send('ba2d09a1');
+  
+  const {body} = req;
+  switch (body.type) {
+    case 'confirmation':
+    res.end('ba2d09a1');
+      break;
+  
+    default:
+    console.log(body);
+    vk.PostsGet();
+    vk.UsersGet();
+    res.end('ok');
+      break;
+  }
+  
 });
 
 app.get('/', function (req, res) {
