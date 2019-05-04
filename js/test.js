@@ -68,8 +68,8 @@ var start = async function (){
 
 await vk.Auch(); 
 await bd.Auch(); 
-await vk.PostsGet();               
-await vk.UsersGet(); 
+//await vk.PostsGet();               
+//await vk.UsersGet(); 
 await parsloop();
 WidgetUptateLoop();
 };
