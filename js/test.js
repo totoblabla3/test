@@ -40,9 +40,11 @@ var parsloop = async function(){
     }
     Users.sort(function(a, b){return b.balls-a.balls;});
 
+    var tu = [];
     for (let i = 0; i < (50 || Users.length); i++) {
-        TopUsers[i] = Users[i];  
+        tu[i] = Users[i];  
     }
+    TopUsers = tu;
     
     console.log(date.getHours()+":"+date.getMinutes()+":"+date.getSeconds());
     console.log("Итерация заняла: "+((date-startdate)/1000)+" сек");

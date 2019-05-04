@@ -9,8 +9,9 @@
   <body>
         <!-- bg color #EDEEF0; -->
         <!--<a type = "button" onclick="addkey()">Разрешить доступ</a>-->
+        <a id="a1" href="/rules">Правила</a>
+        <h2 align= "center">Толчок Григорьева</h2>
         <table align= "center">
-            <caption>Топ участников сообщества</caption>
             <tr>
                 <th>Место</th>
                 <th>Балл</th>
@@ -22,7 +23,7 @@
               <tr>
                 <td><%=i+1%></td>
                 <td><%= users.balls %></td>
-                <td><a href="https://vk.com/id<%= users.uid %>"><%= users.name %></a></td>
+                <td><a id="a2" URL="https://vk.com/id<%= users.uid %>"><%= users.name %></a></td>
               </tr>
               <% } %>
             <%}) %>

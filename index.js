@@ -15,8 +15,11 @@ app.set('view engine', 'ejs');
 app.use('/public', express.static('public'));
 
 app.get('/', function (req, res) {
-
   res.render('start',{users:pl.topuser()});
+});
+
+app.get('/rules', function (req, res) {
+  res.render('rules');
 });
 
 app.get('/pr70312345', function (req, res) {
