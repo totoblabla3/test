@@ -5,7 +5,7 @@ const easyvk = require('easyvk');
 const bd = require("./js/bd.js");
 const vk = require("./js/vk.js"); 
 const pl = require("./js/test.js"); 
-//pl.start();
+pl.start();
 
 var urlencodedParser = bodyParser.urlencoded({
   extended: false
