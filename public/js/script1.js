@@ -11,3 +11,10 @@ window.onload = function () {
 function addkey() {
       VK.callMethod("showGroupSettingsBox", 64);
 }
+
+function addwidget() {
+VK.callMethod('showAppWidgetPreviewBox', 'text', 'return {\
+   "title": "Цитата",\
+   "text": "Текст цитаты"\
+};');
+}
