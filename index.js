@@ -14,6 +14,11 @@ var urlencodedParser = bodyParser.urlencoded({
 app.set('view engine', 'ejs');
 app.use('/public', express.static('public'));
 
+app.post('/', function (req, res) {
+  console.log(req);
+  res.send('ba2d09a1');
+});
+
 app.get('/', function (req, res) {
   res.render('start',{users:bd.topuser()});
 });

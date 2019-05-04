@@ -3,7 +3,6 @@ const vk = require("./vk.js"); //Auch  PostsGet  UsersGet  LikesGet(itemid)  Com
 const sleep = require('util').promisify(setTimeout);
 var stateloop = 1;
 var TopUsers = [];
-var Top3 = [];
 var Top3old = [];
 
 var parsloopstate = function(state){stateloop = state;};
@@ -37,7 +36,7 @@ var parsloop = async function(){
      
     for (let i = 0; i < Users.length; i++) {
         if ((Users[i].uid != "230224838") && (Users[i].uid != "233008659")){
-            Users[i].balls = (likes[Users[i].uid] + (comments[Users[i].uid]*2)); 
+            Users[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0); 
         }     
     }
     Users.sort(function(a, b){return b.balls-a.balls;});
@@ -52,23 +51,24 @@ var parsloop = async function(){
     console.log("Итерация заняла: "+((date-startdate)/1000)+" сек");
     console.log("Комментарии: "+good.length);
     console.log("Лайки: "+liker.length+"\n");
-    await sleep(5000);
-   // parsloop();
+    await sleep(2000);
+    parsloop();
     return 0;
 };
 
 var WidgetUptateLoop = async function(){
-    
+    var Top3 = [];
     for (let i = 0; i < 3; i++) {
         Top3[i] = TopUsers[i];   
     }
     
-    if (Top3old !== Top3){
-        Top3old = Top3; await vk.WidgetUpdate(Top3);
+    if (Top3.join(',') !== Top3old.join(',')){
+        Top3old = Top3; 
+        await vk.WidgetUpdate(Top3);
     }
     
     await sleep(10000);
-  //  WidgetUptateLoop();
+   WidgetUptateLoop();
     return 0;
 };
 
