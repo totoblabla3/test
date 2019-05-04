@@ -64,8 +64,8 @@ var WidgetUptateLoop = async function(){
     
     if (Top3old === Top3){
         
-    }else{await vk.WidgetUpdate(Top3);
-        Top3old = Top3;}
+    }else{Top3old = Top3; await vk.WidgetUpdate(Top3);
+        }
     
     await sleep(10000);
     WidgetUptateLoop();
