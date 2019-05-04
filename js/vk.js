@@ -64,7 +64,7 @@
       return await Auch();
     }
 
-    ownerid = "158989414";//vkgroup.session.group_id;//"65723219";
+    ownerid = "65723219";//vkgroup.session.group_id;//"65723219";
     return "VkAuch_ok"; 
   };
   var PostsGet = async function(){
