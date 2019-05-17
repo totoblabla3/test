@@ -26,8 +26,9 @@ app.post('/', function (req, res) {
     break;
     
     case 'message_reply':
+        res.end('ok');
     if ((body.object.text.indexOf("Купить за ЕБаллы:") !== -1) && (body.object.text.indexOf("Новый заказ") == -1)){
-      by();
+       by();
       async function by(){ 
       
           var ustat = await pl.Ustat(); 
@@ -84,10 +85,11 @@ app.post('/', function (req, res) {
          }
         
       }
+      
       console.log("GOOD");
     }
    // console.log(body);
-    res.end('ok');
+   
     break;
   
     default:
