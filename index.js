@@ -71,7 +71,7 @@ app.listen(process.env.PORT || 3000);
   if ((body.object.text.indexOf("Купить за ЕБаллы:") !== -1) && (body.object.text.indexOf("Новый заказ") == -1)){
      
     var ustat = await pl.Ustat(); 
-     if (ustat == []){
+     if (ustat === []){
       let resp = await vk.senditem(body.object.peer_id,"","","start_server");
       console.log("Попытка покупки. Сервер не запущен");
      }else{    
