@@ -375,7 +375,7 @@
      }else
      if (item =="start_server"){
       mess ="Повторите попытку через несколько минут";
-     }
+     }else
 
      if (item =="У пушистых не только лапки"){
          mess = shapka+"http://vk.com/@tolchokgrigoreva-na-skolko-tebe-interesno";
