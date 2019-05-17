@@ -140,7 +140,7 @@
       var userch = 0;
       
       for (let sb2 = 0; sb2 < shopballs.length; sb2++) {
-        await sleep(001);
+        await sleep(1);
       if (users[sb].uid == shopballs[sb2].uid){userch = 1;}  
       } 
 
