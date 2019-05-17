@@ -26,9 +26,10 @@ app.post('/', function (req, res) {
     break;
     
     case 'message_reply':
-        res.end('ok');
+        res.end('ok');   
     if ((body.object.text.indexOf("Купить за ЕБаллы:") !== -1) && (body.object.text.indexOf("Новый заказ") == -1)){
        by();
+       console.log("==========good");
       async function by(){ 
       
           var ustat = await pl.Ustat(); 
@@ -86,7 +87,7 @@ app.post('/', function (req, res) {
         
       }
       
-      console.log("GOOD");
+     
     }
    // console.log(body);
    
