@@ -25,9 +25,10 @@ app.post('/', function (req, res) {
     //res.end('ba2d09a1');
     break;
     
-    case 'message_reply':     
+    case 'message_reply':  
+    res.end('ok');     
         by(body);
-        res.end('ok');  
+        
     break;
   
     default:
