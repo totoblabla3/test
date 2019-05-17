@@ -42,8 +42,8 @@ app.post('/', function (req, res) {
     default:
     //console.log(body);
     res.end('ok');
-    vk.PostsGet();
-    vk.UsersGet();
+    // vk.PostsGet();
+    // vk.UsersGet();
       break;
   }
   
