@@ -6,6 +6,7 @@ const bd = require("./js/bd.js");
 const vk = require("./js/vk.js"); 
 const pl = require("./js/test.js"); 
 const sleep = require('util').promisify(setTimeout);
+var oldbody;
 pl.start();
 
 var urlencodedParser = bodyParser.urlencoded({
@@ -26,8 +27,15 @@ app.post('/', function (req, res) {
     break;
     
     case 'message_reply':  
-    res.end('ok');     
-        by(body);
+    res.end('ok');   
+    if ((body.object.text.indexOf("Купить за ЕБаллы:") !== -1) && 
+        (body.object.text.indexOf("Новый заказ") == -1) && 
+        (body.object.text !== oldbody))
+    {
+      oldbody == body.object.text;
+      by(body);
+    }  
+        
         
     break;
   
@@ -67,7 +75,7 @@ app.listen(process.env.PORT || 3000);
   
   
  async function by(body){ 
-  if ((body.object.text.indexOf("Купить за ЕБаллы:") !== -1) && (body.object.text.indexOf("Новый заказ") == -1)){
+  
    
     var ustat = await pl.Ustat(); 
      if (ustat.length == 0){
@@ -123,7 +131,7 @@ app.listen(process.env.PORT || 3000);
         }else{console.log(err.message); }
     }
   }
- }
+ 
  
 
 }
