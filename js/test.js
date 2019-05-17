@@ -86,7 +86,7 @@ await vk.PostsGet();
 //bd.SBallsRewrite([{uid: "0000", balls: 0}]);             
 await vk.UsersGet(); 
 await parsloop();
-//WidgetUptateLoop();
+WidgetUptateLoop();
 };
 
 module.exports.parsloop = parsloopstate;
