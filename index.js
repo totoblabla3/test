@@ -32,7 +32,7 @@ app.post('/', function (req, res) {
         (body.object.text.indexOf("Новый заказ") == -1) && 
         (body.object.text !== oldbody))
     {
-      oldbody == body.object.text;
+      oldbody = body.object.text;
       by(body);
     }  
         
