@@ -336,7 +336,7 @@
     likegood = [];
     LikeThread = posts.length;
     for (let i = 0; i < posts.length; i++) {
-      await sleep(2);
+      await sleep(5);
       PostLikesGetThread(posts[i],type);
     }
     while (LikeThread !== 0){
