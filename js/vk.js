@@ -321,7 +321,7 @@
   Thread = posts.length;
 
     for (let i = 0; i < posts.length; i++) {
-      await sleep(1);
+      await sleep(5);
       CommentsGetThread(posts[i]);
     }
     while (Thread !== 0){
@@ -336,7 +336,7 @@
     likegood = [];
     LikeThread = posts.length;
     for (let i = 0; i < posts.length; i++) {
-      await sleep(1);
+      await sleep(2);
       PostLikesGetThread(posts[i],type);
     }
     while (LikeThread !== 0){

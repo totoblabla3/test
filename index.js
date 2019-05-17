@@ -33,9 +33,9 @@ app.post('/', function (req, res) {
   
     default:
     //console.log(body);
+    res.end('ok');
     vk.PostsGet();
     vk.UsersGet();
-    res.end('ok');
       break;
   }
   
