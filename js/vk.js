@@ -138,7 +138,7 @@
     var SBUtick = 0;
     for (let sb = 0; sb < users.length; sb++) {
       var userch = 0;
-      await sleep(5);
+      await sleep(3);
       for (let sb2 = 0; sb2 < shopballs.length; sb2++) {
         
       if (users[sb].uid == shopballs[sb2].uid){userch = 1;}  
@@ -373,6 +373,9 @@
      if (item =="non_sub123"){
       mess ="Ошибка, Вы не подписаны на сообщество";
      }else
+     if (item =="start_server"){
+      mess ="Повторите попытку через несколько минут";
+     }
 
      if (item =="У пушистых не только лапки"){
          mess = shapka+"http://vk.com/@tolchokgrigoreva-na-skolko-tebe-interesno";
