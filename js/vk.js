@@ -99,7 +99,7 @@
   };
 
   var UsersGet = async function(){
-     
+    var start = new Date(); 
     var vkr1;
     var vkr2;
     var mainloop;
@@ -140,13 +140,14 @@
       var userch = 0;
 
       for (let sb2 = 0; sb2 < shopballs.length; sb2++) {
+        await sleep(1);
       if (users[sb].uid == shopballs[sb2].uid){userch = 1;}  
       } 
 
       if (userch == 0){SBUtick++; shopballsAdd.push({uid:users[sb].uid, balls: 0});}
     }
 
-    var start = new Date(); 
+     
     await pl.parsloop(0);
 
     if(SBUtick !== 0){

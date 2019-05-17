@@ -41,7 +41,7 @@ var parsloop = async function(){
         if ((Users[i].uid != "230224838") && (Users[i].uid != "233008659")){
 
             let sbid = 0;
-            while (Users[i].uid !== shopballs[sbid].uid) {sbid++;}
+            while (Users[i].uid !== shopballs[sbid].uid) {await sleep(1);sbid++;}
 
             Users[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0) - (shopballs[sbid].balls || 0); 
         }     
