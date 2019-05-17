@@ -58,7 +58,6 @@ var parsloop = async function(){
     console.log("Итерация заняла: "+((date-startdate)/1000)+" сек");
     console.log("Комментарии: "+good.length);
     console.log("Лайки: "+liker.length+"\n");
-    await sleep(7000);
     parsloop();
     return 0;
 };

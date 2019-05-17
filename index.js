@@ -26,6 +26,7 @@ app.post('/', function (req, res) {
     break;
     
     case 'message_reply':
+      console.log(body.object.body);
     if ((body.object.body.indexOf("Купить за ЕБаллы:") !== -1) && (body.object.body.indexOf("Итого:") !== -1)){
       by();
       async function by(){ 
