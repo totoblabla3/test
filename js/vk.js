@@ -138,9 +138,9 @@
     var SBUtick = 0;
     for (let sb = 0; sb < users.length; sb++) {
       var userch = 0;
-      await sleep(1);
+      
       for (let sb2 = 0; sb2 < shopballs.length; sb2++) {
-        
+        await sleep(001);
       if (users[sb].uid == shopballs[sb2].uid){userch = 1;}  
       } 
 
