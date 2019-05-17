@@ -61,7 +61,6 @@ app.get('/ur70312345', function (req, res) {
 app.listen(process.env.PORT || 3000);
 //http://localhost:3000/
 
-by();
 
 
 
