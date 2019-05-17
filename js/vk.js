@@ -55,7 +55,7 @@
     return "VkAuch_ok"; 
   };
   var PostsGet = async function(){
-     
+     var start = new Date(); 
     var vkr1;
     var vkr2;
     var mainloop;
@@ -88,7 +88,7 @@
         postsids.push(vkr1.items[i].id); 
       }
      }
-     var start = new Date(); 
+     
     await pl.parsloop(0);
     var bdrespones = await bd.PostsRewrite(postsids);
     if (bdrespones !== "bd_PostsRewrite_ok"){console.log("ERROR3: bd.PostsRewrite");}
@@ -138,9 +138,9 @@
     var SBUtick = 0;
     for (let sb = 0; sb < users.length; sb++) {
       var userch = 0;
-
+      await sleep(1);
       for (let sb2 = 0; sb2 < shopballs.length; sb2++) {
-        await sleep(1);
+        
       if (users[sb].uid == shopballs[sb2].uid){userch = 1;}  
       } 
 
