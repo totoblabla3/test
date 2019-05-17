@@ -4,8 +4,10 @@ const sleep = require('util').promisify(setTimeout);
 var stateloop = 1;
 var TopUsers = [];
 var Top3old = [];
+var Usersstat = [];
 
 var parsloopstate = function(state){stateloop = state;};
+
 
 var parsloop = async function(){
     while (stateloop == 0){
@@ -15,6 +17,7 @@ var parsloop = async function(){
     var startdate = new Date();
     var posts = await bd.PostsGet();
     var Users = await bd.UsersGet();  
+    var shopballs = await bd.SBallsGet("All");
     var {good, clike} = await vk.CommentsGet(posts);
     var liker = await vk.PostLikesGet(posts,"post");
     liker = liker.concat(await vk.PostLikesGet(clike,"comment"));  
@@ -36,11 +39,15 @@ var parsloop = async function(){
      
     for (let i = 0; i < Users.length; i++) {
         if ((Users[i].uid != "230224838") && (Users[i].uid != "233008659")){
-            Users[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0); 
+
+            let sbid = 0;
+            while (Users[i].uid !== shopballs[sbid].uid) {sbid++;}
+
+            Users[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0) - (shopballs[sbid].balls || 0); 
         }     
     }
     Users.sort(function(a, b){return b.balls-a.balls;});
-
+    Usersstat = Users;
     var tu = [];
     for (let i = 0; i < (50 || Users.length); i++) {
         tu[i] = Users[i];  
@@ -51,7 +58,8 @@ var parsloop = async function(){
     console.log("Итерация заняла: "+((date-startdate)/1000)+" сек");
     console.log("Комментарии: "+good.length);
     console.log("Лайки: "+liker.length+"\n");
-    //parsloop();
+    await sleep(7000);
+    parsloop();
     return 0;
 };
 
@@ -67,7 +75,7 @@ var WidgetUptateLoop = async function(){
     }
     
     await sleep(10000);
-  // WidgetUptateLoop();
+   WidgetUptateLoop();
     return 0;
 };
 
@@ -75,11 +83,13 @@ var start = async function (){
 
 await vk.Auch(); 
 await bd.Auch(); 
-await vk.PostsGet();               
+await vk.PostsGet();  
+//bd.SBallsRewrite([{uid: "0000", balls: 0}]);             
 await vk.UsersGet(); 
 await parsloop();
-WidgetUptateLoop();
+//WidgetUptateLoop();
 };
 
 module.exports.parsloop = parsloopstate;
 module.exports.start = start;
+module.exports.Ustat = function(){return Usersstat;};

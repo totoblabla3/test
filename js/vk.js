@@ -29,7 +29,7 @@
    // debug: myDebugger
   };
   var gauch = {    
-    access_token: '2f65ab62e207d5d6f4465fc2361c43179848fe60d8a0d93260dc0f005bb1c4a6897f6e88ee998fc5b32e8',//'7bdfcd69418e3190f90ecacc59f0c84b6b97de8814a14c411b1ceadb9b9d1f893d5beff8ff9bb217fd735',
+    access_token: '4be27b07815a32a956019bdd24d24b6ddc83ba2cf67848a645d394569a4ec4e1100c13f91fbeb79b58f34', //'ce04b5a697bd87efbcc7ce44fe3624afbd9a95d490eb2dc5246f9e34cd5a63f172bd7fbbd406bde104fe4', //
     api_v: '5.95',
     lang: ["ru"][0],
     //debug: myDebugger
@@ -45,13 +45,13 @@
     }
 
     vkseq = await easyvk(sauch);
-    if (!vkgroup.session.hasOwnProperty("group_id")){
+    if (!vkgroup.session.hasOwnProperty("group_id")){ 
       console.log('Vk_gauch, ошибка! '+vkgroup.error);
       await sleep(20000);
       return await Auch();
     }
 
-    ownerid = "65723219";//vkgroup.session.group_id;//"65723219";
+    ownerid = vkgroup.session.group_id;//"65723219";
     return "VkAuch_ok"; 
   };
   var PostsGet = async function(){
@@ -63,7 +63,7 @@
     try{
     var {vkr} = await vkseq.call("wall.get", {owner_id:"-"+ownerid, count:100, filter:"all"});   
     vkr1 = vkr;      
-    }catch (err) {console.log("ERROR3: "+err); await sleep(500); UsersGet(); return 0;};
+    }catch (err) {console.log("ERROR1: "+err); await sleep(2000); UsersGet(); return 0;};
 
     if (vkr1.count > 100){
 
@@ -77,7 +77,7 @@
           try{
           var {vkr} = await vkseq.call("wall.get", {owner_id:"-"+ownerid, offset:maini*100, count:100, filter:"all"});   
           vkr2 = vkr;      
-          }catch (err) {console.log("ERROR3: "+err); await sleep(500); UsersGet(); return 0;};
+          }catch (err) {console.log("ERROR2: "+err); await sleep(2000); UsersGet(); return 0;};
 
           for (let i = 0; i < vkr2.items.length; i++) {
             postsids.push(vkr2.items[i].id); 
@@ -91,7 +91,7 @@
      var start = new Date(); 
     await pl.parsloop(0);
     var bdrespones = await bd.PostsRewrite(postsids);
-    if (bdrespones !== "bd_PostsRewrite_ok"){console.log("ERROR: bd.PostsRewrite");}
+    if (bdrespones !== "bd_PostsRewrite_ok"){console.log("ERROR3: bd.PostsRewrite");}
     await pl.parsloop(1);
     var end = new Date();
     console.log("Обновление базы постов. Время записи: "+((end-start)/1000)+" сек");
@@ -107,7 +107,7 @@
     try{
     var {vkr} = await vkseq.call("groups.getMembers", {group_id:ownerid, offset:0, count:1000,fields:"first_name"});   
     vkr1 = vkr;      
-    }catch (err) {console.log("ERROR3: "+err); await sleep(500); UsersGet(); return 0;};
+    }catch (err) {console.log("ERROR4: "+err); await sleep(2000); UsersGet(); return 0;};
 
     if (vkr1.count > 1000){
 
@@ -121,7 +121,7 @@
           try{
           var {vkr} = await vkseq.call("groups.getMembers", {group_id:ownerid, offset:maini*1000, count:1000,fields:"first_name"});   
           vkr2 = vkr;      
-          }catch (err) {console.log("ERROR3: "+err); await sleep(500); UsersGet(); return 0;};
+          }catch (err) {console.log("ERROR5: "+err); await sleep(2000); UsersGet(); return 0;};
 
           for (let i = 0; i < vkr2.items.length; i++) {
             users.push({uid:vkr2.items[i].id, name:vkr2.items[i].first_name+" "+vkr2.items[i].last_name, balls: 0}); 
@@ -132,13 +132,33 @@
         users.push({uid:vkr1.items[i].id, name:vkr1.items[i].first_name+" "+vkr1.items[i].last_name, balls: 0}); 
       }
      }
-     var start = new Date(); 
+     
+    var shopballsAdd = [];
+    var shopballs = await bd.SBallsGet("All");
+    var SBUtick = 0;
+    for (let sb = 0; sb < users.length; sb++) {
+      var userch = 0;
+
+      for (let sb2 = 0; sb2 < shopballs.length; sb2++) {
+      if (users[sb].uid == shopballs[sb2].uid){userch = 1;}  
+      } 
+
+      if (userch == 0){SBUtick++; shopballsAdd.push({uid:users[sb].uid, balls: 0});}
+    }
+
+    var start = new Date(); 
     await pl.parsloop(0);
+
+    if(SBUtick !== 0){
+      var bdrespones = await bd.SBallsAdd(shopballsAdd);
+      if (bdrespones !== "bd_ShopBallsAdd_ok"){console.log("ERROR6: bd.ShopBallsAdd");}
+    }
+   
     var bdrespones = await bd.UsersRewrite(users);
-    if (bdrespones !== "bd_UsersRewrite_ok"){console.log("ERROR: bd.UsersRewrite");}
+    if (bdrespones !== "bd_UsersRewrite_ok"){console.log("ERROR7: bd.UsersRewrite");}
     await pl.parsloop(1);
     var end = new Date();
-    console.log("Обновление базы подписчиков. Время записи: "+((end-start)/1000)+" сек");
+    console.log("Обновление базы подписчиков и SBU. Время записи: "+((end-start)/1000)+" сек");
     return 0;
   };
  
@@ -153,7 +173,7 @@
    try{    
       var {vkr} = await vkseq.call("likes.getList" , {item_id: itemid , owner_id:"-"+ownerid, filter: "likes", count:1000, type:type});
       vkr1 = vkr; 
-    } catch (err) { console.log("ERROR1: "+err); await sleep(500); PostLikesGetThread(itemid,type); return 0;} ////////////////////!!!!!!!!!!!!!!!!!!!!!!! comments   
+    } catch (err) { console.log("ERROR8: "+err); await sleep(2000); LikeThread = LikeThread-1; return 0;} ////////////////////!!!!!!!!!!!!!!!!!!!!!!! comments   
        
     //console.log(vkr1);
     if (vkr1.count == 0){LikeThread = LikeThread-1;return 0;}
@@ -172,7 +192,7 @@
           var {vkr} = await vkseq.call("likes.getList" , {item_id: itemid , owner_id:"-"+ownerid, filter: "likes", offset:maini*1000, count:1000, type:type});
           vkr2 = vkr;
         } catch(err){ 
-          console.log("ERROR2: "+err); await sleep(500); PostLikesGetThread(itemid,type); return 0;}   
+          console.log("ERROR9: "+err); await sleep(2000); LikeThread = LikeThread-1; return 0;}   
         
 
         for (let i2 = 0; i2 < vkr2.items.length; i2++) {
@@ -209,7 +229,7 @@
     try{
     var {vkr} = await vkseq.call("wall.getComments", {post_id:itemid, owner_id:"-" + ownerid ,count:100, need_likes: 1, thread_items_count:10});
     vkr1 = vkr;  
-  }catch (err) {console.log("ERROR3: "+err); await sleep(500); CommentsGetThread(itemid);return 0;} ////////////////////!!!!!!!!!!!!!!!!!!!!!!!
+  }catch (err) {console.log("ERROR10: "+err); await sleep(2000); Thread = Thread-1;return 0;} ////////////////////!!!!!!!!!!!!!!!!!!!!!!!
      
 
     if (vkr1.current_level_count == 0){Thread = Thread-1;return 0;}
@@ -218,7 +238,7 @@
       commentloop = 100;
 
       cpresp = await Commentspars();
-      if (cpresp == "err"){CommentsGetThread(itemid);return 0;}
+      if (cpresp == "err"){Thread = Thread-1;return 0;}
 
       mainloop = Math.ceil(vkr1.current_level_count / 100);
 
@@ -226,13 +246,13 @@
 
         try{
         var {vkr} = await vkseq.call("wall.getComments", {post_id:itemid,owner_id:"-" + ownerid ,count:100,offset: maini*100, need_likes: 1, thread_items_count:10});
-        }catch(err){console.log("ERROR4: "+err); await sleep(500); CommentsGetThread(itemid);return 0;}
+        }catch(err){console.log("ERROR11: "+err); await sleep(2000); Thread = Thread-1;return 0;}
 
         vkr1 = vkr;
         if (vkr1.items.length > 100){commentloop = 100;}else{commentloop =vkr1.items.length;};
 
         cpresp = await Commentspars();
-        if (cpresp == "err"){CommentsGetThread(itemid);return 0;}
+        if (cpresp == "err"){Thread = Thread-1;return 0;}
       }
 
       clike = await clike.concat(clikeThread);
@@ -244,7 +264,7 @@
       commentloop =vkr1.current_level_count;
 
       cpresp = await Commentspars();
-      if (cpresp == "err"){CommentsGetThread(itemid);return 0;}
+      if (cpresp == "err"){Thread = Thread-1;return 0;}
 
       clike = await clike.concat(clikeThread);
       good = await good.concat(goodThread);
@@ -270,7 +290,7 @@
             try{
             var {vkr} = await vkseq.call("wall.getComments", {post_id:itemid, owner_id:"-" + ownerid, count:100, offset: i2*100,need_likes: 1, comment_id: vkr1.items[i].id });
             vkr2 = vkr;  
-          }catch(err){console.log("ERROR5: "+err); await sleep(500); return "err";}
+          }catch(err){console.log("ERROR12: "+err); await sleep(2000); return "err";}
 
             for (let i3 = 0; i3 < vkr2.items.length; i3++){
               if (!vkr2.items[i3].deleted){goodThread.push(vkr2.items[i3].from_id)};
@@ -337,10 +357,51 @@
                {title:"'+uids[1].name+'", link:"'+uids[1].balls+' ЕБаллов", link_url:"https://vk.com/tolchokgrigoreva?w=wall-65723219_13568", icon_id:"id'+uids[1].uid+'", url:"https://vk.com/id'+uids[1].uid+'"},\
                {title:"'+uids[2].name+'", link:"'+uids[2].balls+' ЕБаллов", link_url:"https://vk.com/tolchokgrigoreva?w=wall-65723219_13568", icon_id:"id'+uids[2].uid+'", url:"https://vk.com/id'+uids[2].uid+'"}],\
       };'});
-      }catch(err){console.log("ERROR WidgetUpdate: "+err); await sleep(10000); WidgetUpdate(uids);return 0;}
+      }catch(err){console.log("ERROR13 WidgetUpdate: "+err); await sleep(10000); WidgetUpdate(uids);return 0;}
       console.log("Виджет обновлен <======================\n") 
  
    }
+
+   var senditem = async function(id,cost,ostatok,item){
+     var mess;
+     var shapka = "Оплата прошла успешно \n Списано ЕБаллов: "+cost+"\n Остаток ЕБаллов: "+ostatok+"\n\n";
+     
+     if (item =="non_money123"){
+      mess ="Недостаточно ЕБаллов для покупки \n Ваш баланс: "+ostatok;
+     }else
+     if (item =="non_sub123"){
+      mess ="Ошибка, Вы не подписаны на сообщество";
+     }else
+
+     if (item =="У пушистых не только лапки"){
+         mess = shapka+"http://vk.com/@tolchokgrigoreva-na-skolko-tebe-interesno";
+     }else
+     if(item =="Собутыльник на час"){
+          mess = shapka+"С вами свяжется администратор";
+     }else
+     if (item =="Ни одним репостом едины"){
+      mess = shapka+"С вами свяжется администратор";
+     }else
+     if (item =="Я тебя люблю"){
+      mess = shapka+"С вами свяжется администратор";
+     }else{
+      mess ="Ошибка, операция остановлена"
+     }
+     var random = getRandomInt(0, 1000000);
+     try{
+     var {vkr} = await vkgroup.call('messages.send', {peer_id: id,message: mess,random_id: random});
+     return "ok";
+     }catch(err){
+       console.log(err);
+       return "err"
+     }
+  
+  }
+
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+  
 
   module.exports.Auch = Auch;
   module.exports.PostLikesGet = PostLikesGet;
@@ -348,3 +409,4 @@
   module.exports.PostsGet = PostsGet; 
   module.exports.CommentsGet = CommentsGet; 
   module.exports.WidgetUpdate = WidgetUpdate;
+  module.exports.senditem = senditem;

@@ -20,8 +20,16 @@ var PostsRewrite = async function(posts){
 };
 
 var UsersGet = async function(){
-var uid = await Scheme.users.find({});
-  return uid[0].uid;
+  try{
+    let uid = await Scheme.users.find({});
+    return uid[0].uid;
+
+  }catch(err){
+    console.log(err);
+    var resp = await UsersGet();
+    return resp;
+  }
+
 };
 
 var PostsGet = async function(){
@@ -29,11 +37,36 @@ var PostsGet = async function(){
   return posts[0].pids;
 };
 
+var ShopBallsRewrite = async function(ids,balls){
+  await Scheme.sballs.updateOne({"uid.uid":ids}, {$set: {"uid.$.balls": balls}});
+  return "bd_ShopBallsRewrite_ok";
+};
+
+var SBallsAdd = async function(ids){
+  await Scheme.sballs.update({_id : "5cd8951dff598733e0e78923"}, {$push: {uid:{$each:ids}}});
+  return "bd_SBallsAdd_ok";
+};
+
+var ShopBallsGet = async function(ids){
+  if (ids == "All"){
+    let uid = await Scheme.sballs.find({});
+    return uid[0].uid;
+  }else{
+  let uid = await Scheme.sballs.find({uid:{$elemMatch:{"uid":ids}}},{"uid.$": 1, _id: 0}); 
+    return uid[0].uid[0];
+  }
+};
+
 module.exports.Auch = Auch;
 module.exports.PostsGet = PostsGet;
 module.exports.UsersGet = UsersGet;
 module.exports.UsersRewrite = UsersRewrite;
-module.exports.PostsRewrite = PostsRewrite;
+module.exports.PostsRewrite = PostsRewrite; 
+
+module.exports.SBallsAdd = SBallsAdd;
+module.exports.SBallsRewrite = ShopBallsRewrite;
+module.exports.SBallsGet = ShopBallsGet; 
+
 module.exports.newtopuser = function(newtop){TopUsers = newtop;};
 module.exports.topuser = function(){return TopUsers;};
 
