@@ -51,7 +51,7 @@ var parsloop = async function(){
     for (let i = 0; i < (50 || Users.length); i++) {
         tu[i] = Users[i];  
     }
-    bd.newtopuser(tu);
+    bd.newtopuser(tu); 
     TopUsers = tu;
 
     var bdrespones = await bd.UsersRewrite(Usersstat);
