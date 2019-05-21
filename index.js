@@ -39,10 +39,12 @@ app.post('/', function (req, res) {
 
     case 'group_join':
         vk.UsersGet();
+        res.end('ok');
     break;
 
     case 'group_leave':
         vk.UsersGet();
+        res.end('ok');
     break;
   
     default:
