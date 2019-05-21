@@ -346,8 +346,7 @@
       CommentsGetThread(posts[i]);
     }
     while (Thread !== 0){
-      await sleep(100);
-    //console.log(Thread);
+      await sleep(50);
     }
     good.length
     return {good,clike}
@@ -361,8 +360,7 @@
       PostLikesGetThread(posts[i],type);
     }
     while (LikeThread !== 0){
-      await sleep(100);
-      //console.log(Thread);
+      await sleep(50);
     }
     likegood.length
    return likegood;
