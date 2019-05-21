@@ -1,7 +1,8 @@
-var comparison = function (newArr,oldArr){
+var comparison = async function (newArr,oldArr){
     var idx = 0, arr3 = [];
     for (var i = 0; i < newArr.length; i++)
         {
+            await sleep(1);
           idx = oldArr.findIndex(e => e.uid === newArr[i].uid);
           if (idx == -1) arr3.push(newArr[i]);
         } 
