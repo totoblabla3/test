@@ -308,7 +308,7 @@
   };
 
   var UserAdd = async function (id){
-    
+    var start = new Date(); 
   var vkr1;
   try{
     var {vkr} = await vkseq.call("users.get", {user_ids:id});
