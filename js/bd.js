@@ -13,6 +13,11 @@ var UsersRewrite = async function(ids){
   return "bd_UsersRewrite_ok";
 };
 
+var UserAdd = async function(id){
+  await Scheme.sballs.update({_id : "5ce447011e80d80004e8cd03"}, {$push: {uid:{$each:id}}});
+  return "bd_UserAdd_ok";
+};
+
 var PostsRewrite = async function(posts){
   await Scheme.ptid.remove({});
   await Scheme.ptid.create({pids: posts});
@@ -60,6 +65,7 @@ var ShopBallsGet = async function(ids){
 module.exports.Auch = Auch;
 module.exports.PostsGet = PostsGet;
 module.exports.UsersGet = UsersGet;
+module.exports.UserAdd = UserAdd;
 module.exports.UsersRewrite = UsersRewrite;
 module.exports.PostsRewrite = PostsRewrite; 
 

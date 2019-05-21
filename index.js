@@ -7,7 +7,7 @@ const vk = require("./js/vk.js");
 const pl = require("./js/test.js"); 
 const sleep = require('util').promisify(setTimeout);
 var oldbody;
-//pl.start();
+pl.start();
 
 var urlencodedParser = bodyParser.urlencoded({
   extended: false
@@ -38,12 +38,11 @@ app.post('/', function (req, res) {
     break;
 
     case 'group_join':
-        vk.UsersGet();
+        vk.UserAdd(body.object.user_id);
         res.end('ok');
     break;
-
+    
     case 'group_leave':
-        vk.UsersGet();
         res.end('ok');
     break;
   

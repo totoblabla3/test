@@ -307,6 +307,35 @@
     };
   };
 
+  var UserAdd = async function (id){
+    
+  var vkr1;
+  try{
+    var {vkr} = await vkseq.call("users.get", {user_ids:id});
+    vkr1 = vkr;  
+  }catch(err){console.log("ERROR13: "+err); await sleep(2000); return "err";}
+
+  var users = [{uid:id, name:vkr1.first_name+" "+vkr1.last_name, balls: 0}]; 
+  var shopballs = await bd.SBallsGet("All");
+  var shopballsAdd = await c.comparison(users,shopballs);
+
+  await pl.parsloop(0);
+
+  if(shopballsAdd.length !== 0){
+    var bdrespones = await bd.SBallsAdd(shopballsAdd);
+    if (bdrespones !== "bd_ShopBallsAdd_ok"){console.log("ERROR14: bd.ShopBallsAdd");}
+  }
+
+  var bdrespones = await bd.UserAdd(users);
+  if (bdrespones !== "bd_UserAdd_ok"){console.log("ERROR15: bd.UserAdd");}
+  await pl.parsloop(1);
+
+  var end = new Date();
+  console.log("Новый подписчик => Обновление базы подписчиков и SBU. Время записи: "+((end-start)/1000)+" сек");
+  return 0;
+
+  }
+
   var CommentsGet = async function (posts){
     good = [];
     clike = [];
@@ -405,3 +434,4 @@
   module.exports.CommentsGet = CommentsGet; 
   module.exports.WidgetUpdate = WidgetUpdate;
   module.exports.senditem = senditem;
+  module.exports.UserAdd = UserAdd;
