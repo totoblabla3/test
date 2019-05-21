@@ -14,7 +14,7 @@ var UsersRewrite = async function(ids){
 };
 
 var UserAdd = async function(id){
-  await Scheme.sballs.update({_id : "5ce447011e80d80004e8cd03"}, {$push: {uid:{$each:id}}});
+  await Scheme.sballs.update({uid : Array}, {$push: {uid:{$each:id}}});
   return "bd_UserAdd_ok";
 };
 
