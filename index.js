@@ -48,7 +48,6 @@ app.post('/', function (req, res) {
     break;
   
     default:
-    console.log(body);
     res.end('ok');
      vk.PostsGet();
       break;
