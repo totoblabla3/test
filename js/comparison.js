@@ -9,4 +9,4 @@ var comparison = async function (newArr,oldArr){
     return arr3;
    }
 
-module.exports.comparison = comparison;
+module.exports.comparison = comparison; 
