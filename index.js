@@ -43,8 +43,7 @@ app.post('/', function (req, res) {
     break;
     
     case 'group_leave':
-        var bdrespones = await bd.UserRemove(body.object.user_id);
-        if (bdrespones !== "bd_UserRemove_ok"){console.log("ERROR16: bd.UserRemove");}
+        bd.UserRemove(body.object.user_id);
         res.end('ok');
     break;
   
