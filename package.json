@@ -1,32 +1,33 @@
 {
-    "name": "topuser",
-    "description": "a really cool app",
-    "version": "1.0.0",
-    "engines": {
-      "node": "10.15.3"
-    },
-    "dependencies": {
-      "body-parser": "^1.18.3",
-      "easyvk": "^2.4.11",
-      "ejs": "^2.6.1",
-      "express": "^4.16.4",
-      "ip": "^1.1.5",
-      "mongoose": "^5.5.4",
-      "util.promisify": "^1.0.0"
-    },
-    "main": "index.js",
-    "devDependencies": {},
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/totoblabla3/test.git"
-    },
-    "author": "totoblabla3",
-    "license": "ISC",
-    "bugs": {
-      "url": "https://github.com/totoblabla3/test/issues"
-    },
-    "homepage": "https://github.com/totoblabla3/test#readme"
-  }
+  "name": "topuser",
+  "description": "a really cool app",
+  "version": "1.0.0",
+  "engines": {
+    "node": "10.15.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "easyvk": "^2.4.11",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "ip": "^1.1.5",
+    "mongoose": "^5.5.4",
+    "sugar": "^2.0.6",
+    "util.promisify": "^1.0.0"
+  },
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/totoblabla3/test.git"
+  },
+  "author": "totoblabla3",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/totoblabla3/test/issues"
+  },
+  "homepage": "https://github.com/totoblabla3/test#readme"
+}

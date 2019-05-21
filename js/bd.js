@@ -43,7 +43,7 @@ var ShopBallsRewrite = async function(ids,balls){
 };
 
 var SBallsAdd = async function(ids){
-  await Scheme.sballs.update({_id : "5cd8951dff598733e0e78923"}, {$push: {uid:{$each:ids}}});
+  await Scheme.sballs.update({_id : "5ce4324b6371cf15a8fcc0d6"}, {$push: {uid:{$each:ids}}});
   return "bd_SBallsAdd_ok";
 };
 

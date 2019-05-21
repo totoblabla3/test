@@ -3,6 +3,8 @@
   const easyvk = require('easyvk');
   const bd = require("./bd.js");
   const pl = require("./test.js"); 
+  const c = require("./comparison"); 
+
   const sleep = require('util').promisify(setTimeout);
 
   var vkuser,vkgroup,ownerid,vkseq;
@@ -133,25 +135,13 @@
       }
      }
      
-    var shopballsAdd = [];
     var shopballs = await bd.SBallsGet("All");
-    var SBUtick = 0;
-    for (let sb = 0; sb < users.length; sb++) {
-      var userch = 0;
-      await sleep(5);
-      
-      for (let sb2 = 0; sb2 < shopballs.length; sb2++) {
-        
-      if (users[sb].uid == shopballs[sb2].uid){userch = 1;}  
-      } 
 
-      if (userch == 0){SBUtick++; shopballsAdd.push({uid:users[sb].uid, balls: 0});}
-    }
+    var shopballsAdd = await c.comparison(users,shopballs);
 
-     
     await pl.parsloop(0);
 
-    if(SBUtick !== 0){
+    if(shopballsAdd.length !== 0){
       var bdrespones = await bd.SBallsAdd(shopballsAdd);
       if (bdrespones !== "bd_ShopBallsAdd_ok"){console.log("ERROR6: bd.ShopBallsAdd");}
     }
@@ -323,7 +313,7 @@
   Thread = posts.length;
 
     for (let i = 0; i < posts.length; i++) {
-      await sleep(5);
+      await sleep(2);
       CommentsGetThread(posts[i]);
     }
     while (Thread !== 0){
@@ -338,7 +328,7 @@
     likegood = [];
     LikeThread = posts.length;
     for (let i = 0; i < posts.length; i++) {
-      await sleep(5);
+      await sleep(2);
       PostLikesGetThread(posts[i],type);
     }
     while (LikeThread !== 0){

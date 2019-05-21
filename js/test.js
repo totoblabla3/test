@@ -39,11 +39,10 @@ var parsloop = async function(){
      
     for (let i = 0; i < Users.length; i++) {
         if ((Users[i].uid != "230224838") && (Users[i].uid != "233008659")){
-            await sleep(1);
-            let sbid = 0;
-            while (Users[i].uid !== shopballs[sbid].uid) {sbid++;}
 
-            Users[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0) - (shopballs[sbid].balls || 0); 
+            let idx = await shopballs.findIndex(e => e.uid == Users[i].uid);
+
+            Users[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0) - (shopballs[idx].balls || 0); 
         }     
     }
     Users.sort(function(a, b){return b.balls-a.balls;});
@@ -57,6 +56,7 @@ var parsloop = async function(){
 
     var bdrespones = await bd.UsersRewrite(Usersstat);
     if (bdrespones !== "bd_UsersRewrite_ok"){console.log("ERROR7: bd.UsersRewrite");}
+
     var date = new Date();
     console.log(date.getHours()+":"+date.getMinutes()+":"+date.getSeconds());
     console.log("Итерация заняла: "+((date-startdate)/1000)+" сек");

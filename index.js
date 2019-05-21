@@ -93,15 +93,14 @@ app.listen(process.env.PORT || 3000);
      
      let sbid = 0;
      
-     
-     while (body.object.peer_id != ustat[sbid].uid) {sbid++;}
+     let idx = await ustat.findIndex(e => e.uid == body.object.peer_id);
 
      var line = body.object.text.indexOf('ЕБаллы: Купить за')+18;
      var cost = body.object.text.slice(line);
      line = cost.indexOf('ЕБ')-1;
      cost = cost.slice(0,line);
 
-     if (ustat[sbid].balls >= cost){
+     if (ustat[idx].balls >= cost){
 
        var line2 = body.object.text.indexOf('Корзина:')+9;
        var item = body.object.text.slice(line2);
@@ -110,7 +109,7 @@ app.listen(process.env.PORT || 3000);
 
        shopballs.balls = shopballs.balls + Number(cost);
 
-       var resp = await vk.senditem(body.object.peer_id,cost,ustat[sbid].balls - Number(cost),item);
+       var resp = await vk.senditem(body.object.peer_id,cost,ustat[idx].balls - Number(cost),item);
        if (resp == "ok"){
          
          await bd.SBallsRewrite(body.object.peer_id,shopballs.balls);
@@ -120,8 +119,8 @@ app.listen(process.env.PORT || 3000);
        }
        
      }else{
-       let resp = await vk.senditem(body.object.peer_id,cost,ustat[sbid].balls,"non_money123");
-       console.log("Недостаточно баллов для покупки ");//+ustat[sbid].balls+" "+cost); 
+       let resp = await vk.senditem(body.object.peer_id,cost,ustat[idx].balls,"non_money123");
+       console.log("Недостаточно баллов для покупки ");//+ustat[idx].balls+" "+cost); 
      }
 
     }catch(err){

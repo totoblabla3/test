@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const postScheme = new Schema({pids: [String],});
 
 const userScheme = new Schema({uid: [{ uid: String, name: String, balls: Number}]});
-const ShopBallsScheme = new Schema({uid: [{ uid: String, balls: Number}]});
+const ShopBallsScheme = new Schema({uid: [{ uid: Number, name: String, balls: Number}]});
 
 ShopBallsScheme.set('toJSON',{
   virtuals:true
