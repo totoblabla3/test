@@ -18,6 +18,11 @@ var UserAdd = async function(id){
   return "bd_UserAdd_ok";
 };
 
+var UserRemove = async function(id){
+  await Scheme.users.remove({"uid.uid":id});
+  return "bd_UserRemove_ok";
+};
+
 var PostsRewrite = async function(posts){
   await Scheme.ptid.remove({});
   await Scheme.ptid.create({pids: posts});
@@ -65,7 +70,9 @@ var ShopBallsGet = async function(ids){
 module.exports.Auch = Auch;
 module.exports.PostsGet = PostsGet;
 module.exports.UsersGet = UsersGet;
-module.exports.UserAdd = UserAdd;
+module.exports.UserAdd = UserAdd; 
+module.exports.UserRemove = UserRemove;
+
 module.exports.UsersRewrite = UsersRewrite;
 module.exports.PostsRewrite = PostsRewrite; 
 
