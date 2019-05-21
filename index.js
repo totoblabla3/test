@@ -34,16 +34,21 @@ app.post('/', function (req, res) {
     {
       oldbody = body.object.text;
       by(body);
-    }  
-        
-        
+    }    
+    break;
+
+    case 'group_join':
+        vk.UsersGet();
+    break;
+
+    case 'group_leave':
+        vk.UsersGet();
     break;
   
     default:
     console.log(body);
     res.end('ok');
-    // vk.PostsGet();
-    // vk.UsersGet();
+     vk.PostsGet();
       break;
   }
   
