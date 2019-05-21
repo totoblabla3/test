@@ -14,13 +14,13 @@ var UsersRewrite = async function(ids){
 };
 
 var UserAdd = async function(id){
-  await Scheme.sballs.update({uid : "Array"}, {$push: {uid:{$each:id}}});
+  await Scheme.users.update({__v : "0"},{$push: {uid:{$each:id}}});
   return "bd_UserAdd_ok";
 };
 
-var UserRemove = async function(id){
-  await Scheme.users.remove({"uid.uid":id});
-  return "bd_UserRemove_ok";
+var UserRemove = async function(id) {
+  await Scheme.users.updateOne({},{$pull:{"uid":{"uid":id}}},{multi:true});
+  return "bd_UserRemove_ok";    
 };
 
 var PostsRewrite = async function(posts){

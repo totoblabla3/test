@@ -315,7 +315,7 @@
     vkr1 = vkr;  
   }catch(err){console.log("ERROR13: "+err); await sleep(2000); return "err";}
 
-  var users = [{uid:id, name:vkr1.first_name+" "+vkr1.last_name, balls: 0}]; 
+  var users = [{uid:Number(id), name:vkr1[0].first_name+" "+vkr1[0].last_name, balls: 0}]; 
   var shopballs = await bd.SBallsGet("All");
   var shopballsAdd = await c.comparison(users,shopballs);
 
@@ -323,7 +323,7 @@
 
   if(shopballsAdd.length !== 0){
     var bdrespones = await bd.SBallsAdd(shopballsAdd);
-    if (bdrespones !== "bd_ShopBallsAdd_ok"){console.log("ERROR14: bd.ShopBallsAdd");}
+    if (bdrespones !== "bd_SBallsAdd_ok"){console.log("ERROR14: bd.ShopBallsAdd");}
   }
 
   var bdrespones = await bd.UserAdd(users);
