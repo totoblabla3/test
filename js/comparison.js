@@ -1,3 +1,4 @@
+const sleep = require('util').promisify(setTimeout);
 var comparison = async function (newArr,oldArr){
     var idx = 0, arr3 = [];
     for (var i = 0; i < newArr.length; i++)
