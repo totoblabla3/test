@@ -38,7 +38,7 @@ var parsloop = async function(){
     }
      
     for (let i = 0; i < Users.length; i++) {
-        if ((Users[i].uid != "230224838") && (Users[i].uid != "233008659")){
+        if ((Users[i].uid != "000") && (Users[i].uid != "233008659")){ //230224838
             await sleep(1);
             let idx = await shopballs.findIndex(e => e.uid == Users[i].uid);
 
