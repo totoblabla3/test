@@ -342,7 +342,7 @@
   Thread = posts.length;
 
     for (let i = 0; i < posts.length; i++) {
-      await sleep(2);
+      await sleep(4);
       CommentsGetThread(posts[i]);
     }
     while (Thread !== 0){
@@ -356,7 +356,7 @@
     likegood = [];
     LikeThread = posts.length;
     for (let i = 0; i < posts.length; i++) {
-      await sleep(2);
+      await sleep(4);
       PostLikesGetThread(posts[i],type);
     }
     while (LikeThread !== 0){
@@ -399,13 +399,13 @@
          mess = shapka+"http://vk.com/@tolchokgrigoreva-na-skolko-tebe-interesno";
      }else
      if(item =="Собутыльник на час"){
-          mess = shapka+"С вами свяжется администратор";
+          mess = shapka+"В ближайшее время тебе напишет админ.";
      }else
      if (item =="Ни одним репостом едины"){
-      mess = shapka+"С вами свяжется администратор";
+      mess = shapka+"В ближайшее время тебе напишет админ.";
      }else
      if (item =="Я тебя люблю"){
-      mess = shapka+"С вами свяжется администратор";
+      mess = shapka+"В ближайшее время тебе напишет админ.";
      }else{
       mess ="Ошибка, операция остановлена"
      }
