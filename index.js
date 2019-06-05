@@ -124,6 +124,7 @@ app.listen(process.env.PORT || 3000);
        var item = body.object.text.slice(line2);
        line2 = item.indexOf('[За Ебаллы]')-1;
        item = item.slice(0,line2);
+       console.log(item);
 
        shopballs.balls = shopballs.balls + Number(cost);
 
