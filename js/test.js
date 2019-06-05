@@ -13,7 +13,7 @@ var parsloop = async function(){
     while (stateloop == 0){
         await sleep(100);
     }
-    await sleep(10000);
+    await sleep(20000);
     var startdate = new Date();
     var posts = await bd.PostsGet();
     var Users = await bd.UsersGet();  
@@ -83,7 +83,7 @@ var WidgetUptateLoop = async function(){
         await vk.WidgetUpdate(Top3);
     }
     
-    await sleep(10000);
+    await sleep(100000);
    WidgetUptateLoop();
     return 0;
 };
