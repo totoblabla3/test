@@ -98,7 +98,7 @@ app.listen(process.env.PORT || 3000);
    // var ustat = await pl.Ustat(); 
 
     
-      ustat = await bd.UsersGet();
+   var ustat = await bd.UsersGet();
 
 
      if (ustat.length == 0){
