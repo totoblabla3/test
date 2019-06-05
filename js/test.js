@@ -51,7 +51,7 @@ var parsloop = async function(){
     
     var bdrespones = await bd.UsersRewrite(Usersstat);
     if (bdrespones !== "bd_UsersRewrite_ok"){console.log("ERROR7: bd.UsersRewrite");}
-
+ 
     Users.sort(function(a, b){return b.balls-a.balls;});
     var tu = [];
     for (let i = 0; i < (50 || Users.length); i++) {
