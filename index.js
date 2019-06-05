@@ -33,7 +33,7 @@ app.post('/', function (req, res) {
        ) //(body.object.body !== oldbody))
     {
       oldbody = body.object.body;
-      ballEdd(body.object.body);
+      ballEdd(body.object.text);
     }else   
     if ((body.object.text.indexOf("Купить за ЕБаллы:") !== -1) && 
         (body.object.text.indexOf("Новый заказ") == -1) && 
