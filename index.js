@@ -97,9 +97,9 @@ app.listen(process.env.PORT || 3000);
    
    // var ustat = await pl.Ustat(); 
 
-    if (ustat.length == 0){
+    
       ustat = await bd.UsersGet();
-    }
+
 
      if (ustat.length == 0){
       let resp = await vk.senditem(body.object.peer_id,"","","start_server");

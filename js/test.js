@@ -62,9 +62,6 @@ var parsloop = async function(){
     bd.newtopuser(tu); 
     TopUsers = tu;
 
-    var bdrespones = await bd.UsersRewrite(Usersstat);
-    if (bdrespones !== "bd_UsersRewrite_ok"){console.log("ERROR7: bd.UsersRewrite");}
-
     var date = new Date();
     console.log(date.getHours()+":"+date.getMinutes()+":"+date.getSeconds());
     console.log("Итерация заняла: "+((date-startdate)/1000)+" сек");
