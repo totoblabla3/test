@@ -87,7 +87,7 @@ module.exports.topuser = function(){return TopUsers;};
 
 
 
-
+//Usersstat.push({"uid":Users[i].uid, "name":Users[i].name, "balls":((likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0))});
 
 
 

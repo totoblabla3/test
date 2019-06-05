@@ -1,6 +1,5 @@
 const bd = require("./bd.js"); //UsersRewrite  PostsRewrite  PostsGet  UsersGet
 const vk = require("./vk.js"); //Auch  PostsGet  UsersGet  LikesGet(itemid)  CommentsGet(itemid,commentid)
-var _ = require('lodash');
 const sleep = require('util').promisify(setTimeout);
 var stateloop = 1;
 var TopUsers = [];
@@ -38,16 +37,17 @@ var parsloop = async function(){
         await sleep(100);
     }
 
-    var Usersstat = [];
-
+    var Usersstat = Users; 
+    
     for (let i = 0; i < Users.length; i++) {
         if ((Users[i].uid != "230224838") && (Users[i].uid != "233008659")){
             await sleep(1);
             let idx = await shopballs.findIndex(e => e.uid == Users[i].uid);
-            Users[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0) - (shopballs[idx].balls || 0);
-            Usersstat.push({"uid":Users[i].uid, "name":Users[i].name, "balls":((likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0))});
+            Usersstat[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0); 
+           // Users[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0) - (shopballs[idx].balls || 0);
         }
     }
+    
     
     var bdrespones = await bd.UsersRewrite(Usersstat);
     if (bdrespones !== "bd_UsersRewrite_ok"){console.log("ERROR7: bd.UsersRewrite");}
