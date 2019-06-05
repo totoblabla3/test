@@ -37,21 +37,24 @@ var parsloop = async function(){
         await sleep(100);
     }
 
-    var Usersstat = Users; 
-    
+    Usersstat = Users; 
     for (let i = 0; i < Users.length; i++) {
         if ((Users[i].uid != "230224838") && (Users[i].uid != "233008659")){
-            await sleep(1);
-            let idx = await shopballs.findIndex(e => e.uid == Users[i].uid);
-            Users[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0); 
-           // Users[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0) - (shopballs[idx].balls || 0);
-        }
+            Usersstat[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0); 
+        }     
     }
     
     
-    var bdrespones = await bd.UsersRewrite(Users);
+    var bdrespones = await bd.UsersRewrite(Usersstat);
     if (bdrespones !== "bd_UsersRewrite_ok"){console.log("ERROR7: bd.UsersRewrite");}
- 
+
+    // for (let i = 0; i < Users.length; i++) {
+    //     if ((Users[i].uid != "230224838") && (Users[i].uid != "233008659")){
+    //         await sleep(1);
+    //         let idx = await shopballs.findIndex(e => e.uid == Users[i].uid);
+    //         Users[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0) - (shopballs[idx].balls || 0); 
+    //     }     
+    // }
     Users.sort(function(a, b){return b.balls-a.balls;});
     var tu = [];
     for (let i = 0; i < (50 || Users.length); i++) {
@@ -98,3 +101,4 @@ WidgetUptateLoop();
 
 module.exports.parsloop = parsloopstate;
 module.exports.start = start;
+module.exports.Ustat = function(){return Usersstat;};
