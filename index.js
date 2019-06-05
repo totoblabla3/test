@@ -118,7 +118,7 @@ app.listen(process.env.PORT || 3000);
      line = cost.indexOf('ЕБ')-1;
      cost = cost.slice(0,line);
 
-     if (ustat[idx].balls >= cost){
+     if (ustat[idx].balls - shopballs.balls >= cost){
 
        var line2 = body.object.text.indexOf('Корзина:')+9;
        var item = body.object.text.slice(line2);

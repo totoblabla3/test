@@ -39,14 +39,21 @@ var parsloop = async function(){
      
     for (let i = 0; i < Users.length; i++) {
         if ((Users[i].uid != "230224838") && (Users[i].uid != "233008659")){
+            Users[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0); 
+        }     
+    }
+    Usersstat = Users;
+    
+    for (let i = 0; i < Users.length; i++) {
+        if ((Users[i].uid != "230224838") && (Users[i].uid != "233008659")){
             await sleep(1);
             let idx = await shopballs.findIndex(e => e.uid == Users[i].uid);
 
             Users[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0) - (shopballs[idx].balls || 0); 
         }     
     }
+
     Users.sort(function(a, b){return b.balls-a.balls;});
-    Usersstat = Users;
     var tu = [];
     for (let i = 0; i < (50 || Users.length); i++) {
         tu[i] = Users[i];  
