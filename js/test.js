@@ -36,14 +36,18 @@ var parsloop = async function(){
     while (stateloop == 0){
         await sleep(100);
     }
-     
+
+    var Usersstat = Users; 
+    
     for (let i = 0; i < Users.length; i++) {
         if ((Users[i].uid != "230224838") && (Users[i].uid != "233008659")){
-            Users[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0); 
+            await sleep(1);
+            Usersstat[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0); 
+            Users[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0) - (shopballs[idx].balls || 0);
         }     
     }
     
-    Usersstat = Users;
+    
     var bdrespones = await bd.UsersRewrite(Usersstat);
     if (bdrespones !== "bd_UsersRewrite_ok"){console.log("ERROR7: bd.UsersRewrite");}
 
