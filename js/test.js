@@ -38,7 +38,7 @@ var parsloop = async function(){
         await sleep(100);
     }
 
-    var Usersstat = _.cloneDeep(Users);
+    var Usersstat = Users.map(a => Object.assign({}, a));
 
     for (let i = 0; i < Users.length; i++) {
         if ((Users[i].uid != "230224838") && (Users[i].uid != "233008659")){
