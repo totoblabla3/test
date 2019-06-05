@@ -95,7 +95,7 @@ app.listen(process.env.PORT || 3000);
  async function by(body){ 
   
    
-    var ustat = await pl.Ustat(); 
+   // var ustat = await pl.Ustat(); 
 
     if (ustat.length == 0){
       ustat = await bd.UsersGet();
