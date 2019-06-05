@@ -13,7 +13,7 @@ var parsloop = async function(){
     while (stateloop == 0){
         await sleep(100);
     }
-
+    await sleep(10000);
     var startdate = new Date();
     var posts = await bd.PostsGet();
     var Users = await bd.UsersGet();  
@@ -37,15 +37,14 @@ var parsloop = async function(){
         await sleep(100);
     }
 
-    Usersstat = Users; 
     for (let i = 0; i < Users.length; i++) {
         if ((Users[i].uid != "230224838") && (Users[i].uid != "233008659")){
-            Usersstat[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0); 
+            Users[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0); 
         }     
     }
     
     
-    var bdrespones = await bd.UsersRewrite(Usersstat);
+    var bdrespones = await bd.UsersRewrite(Users);
     if (bdrespones !== "bd_UsersRewrite_ok"){console.log("ERROR7: bd.UsersRewrite");}
 
     // for (let i = 0; i < Users.length; i++) {
@@ -68,6 +67,7 @@ var parsloop = async function(){
     console.log("Итерация заняла: "+((date-startdate)/1000)+" сек");
     console.log("Комментарии: "+good.length);
     console.log("Лайки: "+liker.length+"\n");
+    
     parsloop();
     return 0;
 };
