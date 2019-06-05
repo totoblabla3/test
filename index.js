@@ -7,7 +7,7 @@ const vk = require("./js/vk.js");
 const pl = require("./js/test.js"); 
 const sleep = require('util').promisify(setTimeout);
 var oldbody;
-//pl.start();
+pl.start();
 
 var urlencodedParser = bodyParser.urlencoded({
   extended: false
