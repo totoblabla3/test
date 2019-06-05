@@ -45,7 +45,7 @@ var parsloop = async function(){
             await sleep(1);
             let idx = await shopballs.findIndex(e => e.uid == Users[i].uid);
             Users[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0) - (shopballs[idx].balls || 0);
-            Usersstat.push({"uid":Users[i].uid, "name":Users[i].name, "balls":(likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0)});
+            Usersstat.push({"uid":Users[i].uid, "name":Users[i].name, "balls":((likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0))});
         }
     }
     
