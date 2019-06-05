@@ -92,14 +92,9 @@ app.listen(process.env.PORT || 3000);
     console.log(shopballs.balls);
  }
   
- async function by(body){ 
-  
+ async function by(body){
    
-   // var ustat = await pl.Ustat(); 
-
-    
    var ustat = await bd.UsersGet();
-
 
      if (ustat.length == 0){
       let resp = await vk.senditem(body.object.peer_id,"","","start_server");
