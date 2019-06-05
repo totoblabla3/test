@@ -107,10 +107,8 @@ app.listen(process.env.PORT || 3000);
      }else{    
 
      try{
-     var shopballs = await bd.SBallsGet(body.object.peer_id);
-     
-     let sbid = 0;
-     
+
+     var shopballs = await bd.SBallsGet(body.object.peer_id);   
      let idx = await ustat.findIndex(e => e.uid == body.object.peer_id);
 
      var line = body.object.text.indexOf('ЕБаллы: Купить за')+18;
@@ -126,11 +124,9 @@ app.listen(process.env.PORT || 3000);
        item = item.slice(0,line2);
        console.log(item);
 
-       shopballs.balls = shopballs.balls + Number(cost);
-
-       var resp = await vk.senditem(body.object.peer_id,cost,ustat[idx].balls - Number(cost),item);
+       var resp = await vk.senditem(body.object.peer_id,cost,ustat[idx].balls - Number(cost) -  shopballs.balls ,item);
        if (resp == "ok"){
-         
+         shopballs.balls = shopballs.balls + Number(cost); 
          await bd.SBallsRewrite(body.object.peer_id,shopballs.balls);
          console.log("Новая продажа");
        }else{
@@ -138,7 +134,7 @@ app.listen(process.env.PORT || 3000);
        }
        
      }else{
-       let resp = await vk.senditem(body.object.peer_id,cost,ustat[idx].balls,"non_money123");
+       let resp = await vk.senditem(body.object.peer_id,cost,ustat[idx].balls - shopballs.balls,"non_money123");
        console.log("Недостаточно баллов для покупки ");//+ustat[idx].balls+" "+cost); 
      }
 
