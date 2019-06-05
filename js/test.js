@@ -37,7 +37,7 @@ var parsloop = async function(){
         await sleep(100);
     }
 
-    var Usersstat = Object.create(Users);
+    var Usersstat = JSON.parse(JSON.stringify(Users));
     
     for (let i = 0; i < Users.length; i++) {
         if ((Users[i].uid != "230224838") && (Users[i].uid != "233008659")){
