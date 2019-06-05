@@ -27,14 +27,22 @@ app.post('/', function (req, res) {
     break;
     
     case 'message_reply':  
-    res.end('ok');   
+    res.end('ok');
+    if ((body.object.text.indexOf('{"ballEdd":"1.0.0","uid":') !== -1) && 
+        (body.object.text.indexOf('","balls":"') == -1)// && 
+       ) //(body.object.body !== oldbody))
+    {
+      oldbody = body.object.body;
+      ballEdd(body.object.body);
+    }else   
     if ((body.object.text.indexOf("Купить за ЕБаллы:") !== -1) && 
         (body.object.text.indexOf("Новый заказ") == -1) && 
         (body.object.text !== oldbody))
     {
       oldbody = body.object.text;
       by(body);
-    }    
+    }   
+    
     break;
 
     case 'group_join':
@@ -75,10 +83,14 @@ app.get('/ur70312345', function (req, res) {
 app.listen(process.env.PORT || 3000);
 //http://localhost:3000/
 
-
-
-
-  
+ async function ballEdd(body){ 
+    var b = JSON.parse(body);
+    console.log(b.uid);
+    var shopballs = await bd.SBallsGet(b.uid);
+    shopballs.balls = shopballs.balls - b.balls;
+    await bd.SBallsRewrite(b.uid,shopballs.balls);
+    console.log(shopballs.balls);
+ }
   
  async function by(body){ 
   
