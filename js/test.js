@@ -1,5 +1,6 @@
 const bd = require("./bd.js"); //UsersRewrite  PostsRewrite  PostsGet  UsersGet
 const vk = require("./vk.js"); //Auch  PostsGet  UsersGet  LikesGet(itemid)  CommentsGet(itemid,commentid)
+var _ = require('lodash');
 const sleep = require('util').promisify(setTimeout);
 var stateloop = 1;
 var TopUsers = [];
@@ -37,8 +38,8 @@ var parsloop = async function(){
         await sleep(100);
     }
 
-    var Usersstat = JSON.parse(JSON.stringify(Users));
-    
+    var Usersstat = _.cloneDeep(Users);
+
     for (let i = 0; i < Users.length; i++) {
         if ((Users[i].uid != "230224838") && (Users[i].uid != "233008659")){
             await sleep(1);
