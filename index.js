@@ -122,7 +122,7 @@ app.listen(process.env.PORT || 3000);
 
        var line2 = body.object.text.indexOf('Корзина:')+9;
        var item = body.object.text.slice(line2);
-       line2 = item.indexOf('Купить за ЕБаллы:')-1;
+       line2 = item.indexOf('[За Ебаллы]')-1;
        item = item.slice(0,line2);
 
        shopballs.balls = shopballs.balls + Number(cost);
