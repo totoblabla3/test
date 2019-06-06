@@ -12,6 +12,73 @@ bd.Auch();
 
 pl.start();
 
+
+ballEdd = async function (body){ 
+  var b = JSON.parse(body);
+  console.log(b.uid);
+  var shopballs = await bd.SBallsGet(b.uid);
+  shopballs.balls = shopballs.balls - b.balls;
+  await bd.SBallsRewrite(b.uid,shopballs.balls);
+  console.log(shopballs.balls);
+}
+
+by = async function (body){
+
+ var ustat = await bd.UsersGet();
+ console.log(ustat.length);
+
+   if (ustat.length == 0){
+    let resp = await vk.senditem(body.object.peer_id,"","","start_server");
+    console.log("Попытка покупки. Сервер не запущен");
+   }else{    
+
+   try{
+
+   var shopballs = await bd.SBallsGet(body.object.peer_id);   
+   let idx = await ustat.findIndex(e => e.uid == body.object.peer_id);
+
+   var line = body.object.text.indexOf('ЕБаллы: Купить за')+18;
+   var cost = body.object.text.slice(line);
+   line = cost.indexOf('ЕБ')-1;
+   cost = cost.slice(0,line);
+
+   if (ustat[idx].balls - shopballs.balls >= cost){
+
+     var line2 = body.object.text.indexOf('Корзина:')+9;
+     var item = body.object.text.slice(line2);
+     line2 = item.indexOf('[За Ебаллы]')-1;
+     item = item.slice(0,line2);
+     console.log(item);
+
+     var resp = await vk.senditem(body.object.peer_id,cost,ustat[idx].balls - Number(cost) -  shopballs.balls ,item);
+     if (resp == "ok"){
+       shopballs.balls = shopballs.balls + Number(cost); 
+       await bd.SBallsRewrite(body.object.peer_id,shopballs.balls);
+       console.log("Новая продажа");
+     }else{
+       console.log(resp);
+     }
+     
+   }else{
+     let resp = await vk.senditem(body.object.peer_id,cost,ustat[idx].balls - shopballs.balls,"non_money123");
+     console.log("Недостаточно баллов для покупки ");//+ustat[idx].balls+" "+cost); 
+   }
+
+  }catch(err){
+    if (err.message == "Cannot read property 'uid' of undefined"){
+      try{
+       let resp = await vk.senditem(body.object.peer_id,"","","non_sub123");
+       console.log("Не подписан");
+      }catch(err){
+       console.log(err);
+      }
+     
+      }else{console.log(err.message); }
+  }
+}
+}
+
+
 var urlencodedParser = bodyParser.urlencoded({
   extended: false
 });
@@ -86,74 +153,3 @@ app.get('/ur70312345', function (req, res) {
 app.listen(process.env.PORT || 3000);
 //http://localhost:3000/
 
- async function ballEdd(body){ 
-    var b = JSON.parse(body);
-    console.log(b.uid);
-    var shopballs = await bd.SBallsGet(b.uid);
-    shopballs.balls = shopballs.balls - b.balls;
-    await bd.SBallsRewrite(b.uid,shopballs.balls);
-    console.log(shopballs.balls);
- }
-  
- async function by(body){
-
-  // if (await pl.Ustat() !== 1){
-
-
-  // }
-   var ustat = await bd.UsersGet();
-   console.log(ustat.length);
-
-     if (ustat.length == 0){
-      let resp = await vk.senditem(body.object.peer_id,"","","start_server");
-      console.log("Попытка покупки. Сервер не запущен");
-     }else{    
-
-     try{
-
-     var shopballs = await bd.SBallsGet(body.object.peer_id);   
-     let idx = await ustat.findIndex(e => e.uid == body.object.peer_id);
-
-     var line = body.object.text.indexOf('ЕБаллы: Купить за')+18;
-     var cost = body.object.text.slice(line);
-     line = cost.indexOf('ЕБ')-1;
-     cost = cost.slice(0,line);
-
-     if (ustat[idx].balls - shopballs.balls >= cost){
-
-       var line2 = body.object.text.indexOf('Корзина:')+9;
-       var item = body.object.text.slice(line2);
-       line2 = item.indexOf('[За Ебаллы]')-1;
-       item = item.slice(0,line2);
-       console.log(item);
-
-       var resp = await vk.senditem(body.object.peer_id,cost,ustat[idx].balls - Number(cost) -  shopballs.balls ,item);
-       if (resp == "ok"){
-         shopballs.balls = shopballs.balls + Number(cost); 
-         await bd.SBallsRewrite(body.object.peer_id,shopballs.balls);
-         console.log("Новая продажа");
-       }else{
-         console.log(resp);
-       }
-       
-     }else{
-       let resp = await vk.senditem(body.object.peer_id,cost,ustat[idx].balls - shopballs.balls,"non_money123");
-       console.log("Недостаточно баллов для покупки ");//+ustat[idx].balls+" "+cost); 
-     }
-
-    }catch(err){
-      if (err.message == "Cannot read property 'uid' of undefined"){
-        try{
-         let resp = await vk.senditem(body.object.peer_id,"","","non_sub123");
-         console.log("Не подписан");
-        }catch(err){
-         console.log(err);
-        }
-       
-        }else{console.log(err.message); }
-    }
-  }
- 
- 
-
-}
