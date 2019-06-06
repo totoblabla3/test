@@ -7,6 +7,9 @@ const vk = require("./js/vk.js");
 const pl = require("./js/test.js"); 
 const sleep = require('util').promisify(setTimeout);
 var oldbody;
+
+bd.Auch();
+vk.Auch(); 
 pl.start();
 
 var urlencodedParser = bodyParser.urlencoded({
@@ -93,7 +96,11 @@ app.listen(process.env.PORT || 3000);
  }
   
  async function by(body){
-   
+
+  // if (await pl.Ustat() !== 1){
+
+
+  // }
    var ustat = await bd.UsersGet();
 
      if (ustat.length == 0){

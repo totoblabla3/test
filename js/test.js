@@ -4,7 +4,7 @@ const sleep = require('util').promisify(setTimeout);
 var stateloop = 1;
 var TopUsers = [];
 var Top3old = [];
-var Usersstat = [];
+var Usersstat;
 
 var parsloopstate = function(state){stateloop = state;};
 
@@ -90,8 +90,6 @@ var WidgetUptateLoop = async function(){
 
 var start = async function (){
 
-await vk.Auch(); 
-await bd.Auch(); 
 await vk.PostsGet();  
 //bd.SBallsRewrite([{uid: "0000", balls: 0}]);             
 await vk.UsersGet(); 
