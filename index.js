@@ -36,7 +36,7 @@ by = async function (body){
 
    var shopballs = await bd.SBallsGet(body.object.peer_id);   
    let idx = await ustat.findIndex(e => e.uid == body.object.peer_id);
-
+console.log(ustat[idx].uid+"  "+ustat[idx].balls);
    var line = body.object.text.indexOf('ЕБаллы: Купить за')+18;
    var cost = body.object.text.slice(line);
    line = cost.indexOf('ЕБ')-1;
