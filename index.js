@@ -9,7 +9,7 @@ const sleep = require('util').promisify(setTimeout);
 var oldbody;
 
 bd.Auch();
-vk.Auch(); 
+
 pl.start();
 
 var urlencodedParser = bodyParser.urlencoded({
@@ -102,6 +102,7 @@ app.listen(process.env.PORT || 3000);
 
   // }
    var ustat = await bd.UsersGet();
+   console.log(ustat.length);
 
      if (ustat.length == 0){
       let resp = await vk.senditem(body.object.peer_id,"","","start_server");
