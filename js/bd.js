@@ -10,7 +10,7 @@ var Auch = async function(){
 var UsersRewrite = async function(ids){
   // await Scheme.users.remove({});
   // await Scheme.users.create({uid: ids});
-  await Scheme.users.update({__v : "0"},{uid:ids});
+  await Scheme.users.updateMany({__v : "0"},{uid:ids},{multi:true});
   return "bd_UsersRewrite_ok";
 };
 
