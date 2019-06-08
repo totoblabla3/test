@@ -87,7 +87,7 @@ await bd.Auch();
 await vk.Auch(); 
 Usersstat = await bd.UsersGet();
 await vk.PostsGet();              
-await vk.UsersGet(); 
+//await vk.UsersGet(); 
 await parsloop();
 WidgetUptateLoop();
 };

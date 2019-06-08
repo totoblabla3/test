@@ -65,7 +65,7 @@
     try{
     var {vkr} = await vkseq.call("wall.get", {owner_id:"-"+ownerid, count:100, filter:"all"});   
     vkr1 = vkr;      
-    }catch (err) {console.log("ERROR1: "+err); await sleep(2000); UsersGet(); return 0;};
+    }catch (err) {console.log("ERROR1: "+err); await sleep(2000); PostsGet(); return 0;};
 
     if (vkr1.count > 100){
 
@@ -79,7 +79,7 @@
           try{
           var {vkr} = await vkseq.call("wall.get", {owner_id:"-"+ownerid, offset:maini*100, count:100, filter:"all"});   
           vkr2 = vkr;      
-          }catch (err) {console.log("ERROR2: "+err); await sleep(2000); UsersGet(); return 0;};
+          }catch (err) {console.log("ERROR2: "+err); await sleep(2000); PostsGet(); return 0;};
 
           for (let i = 0; i < vkr2.items.length; i++) {
             postsids.push(vkr2.items[i].id); 
