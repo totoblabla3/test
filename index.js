@@ -7,16 +7,9 @@ const vk = require("./js/vk.js");
 const pl = require("./js/test.js"); 
 const sleep = require('util').promisify(setTimeout);
 var oldbody;
-var ustat;
 
-indexstart();
-
-async function indexstart(){
-  await bd.Auch();
-  ustat = await bd.UsersGet();
-  await vk.Auch(); 
+  
   pl.start();
-}
 
 
 var ballEdd = async function (body){ 
@@ -30,9 +23,11 @@ var ballEdd = async function (body){
 
 var by = async function (body){
 
- var uustat = await pl.Ustat();
- if (uustat.length !== 0){
-  ustat = uustat;
+ var ustat = await pl.Ustat();
+
+ while (ustat.length == 0){
+  await sleep(100);
+  ustat = await pl.Ustat();
  }
 
    if (ustat.length == 0){
