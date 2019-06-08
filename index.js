@@ -30,14 +30,17 @@ ballEdd = async function (body){
 by = async function (body){
 
  var uustat = await pl.Ustat();
+ if (ustat.length !== 0){
+  ustat = uustat;
+ }
 
-   if (uustat.length == 0){
+   if (ustat.length == 0){
     let resp = await vk.senditem(body.object.peer_id,"","","start_server");
     console.log("Попытка покупки. Сервер не запущен");
    }else{    
-    
+
    try{
-    ustat = uustat;
+
    var shopballs = await bd.SBallsGet(body.object.peer_id);   
    let idx = await ustat.findIndex(e => e.uid == body.object.peer_id);
 
