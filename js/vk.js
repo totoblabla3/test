@@ -409,7 +409,7 @@
      }else{
       mess ="Ошибка, операция остановлена"
      }
-     var random = getRandomInt(0, 1000000);
+     var random = getRandomInt(0, 1000000); 
      try{
      var {vkr} = await vkgroup.call('messages.send', {peer_id: id,message: mess,random_id: random});
      return "ok";
