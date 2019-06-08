@@ -4,7 +4,7 @@ const sleep = require('util').promisify(setTimeout);
 var stateloop = 1;
 var TopUsers = [];
 var Top3old = [];
-var Usersstat;
+var Usersstat = [];
 
 var parsloopstate = function(state){stateloop = state;};
 
@@ -43,6 +43,8 @@ var parsloop = async function(){
         }     
     }
     
+    Usersstat = Users;
+
     var bdrespones = await bd.UsersRewrite(Users);
     if (bdrespones !== "bd_UsersRewrite_ok"){console.log("ERROR7: bd.UsersRewrite");}
 

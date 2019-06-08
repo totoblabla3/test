@@ -7,10 +7,15 @@ const vk = require("./js/vk.js");
 const pl = require("./js/test.js"); 
 const sleep = require('util').promisify(setTimeout);
 var oldbody;
+var ustat;
 
-bd.Auch();
+indexstart();
 
-pl.start();
+async function indexstart(){
+  await bd.Auch();
+  ustat = await bd.UsersGet();
+  pl.start();
+}
 
 
 ballEdd = async function (body){ 
@@ -24,16 +29,15 @@ ballEdd = async function (body){
 
 by = async function (body){
 
- var ustat = await bd.UsersGet();
- console.log(ustat.length);
+ var uustat = await pl.Ustat();
 
-   if (ustat.length == 0){
+   if (uustat.length == 0){
     let resp = await vk.senditem(body.object.peer_id,"","","start_server");
     console.log("Попытка покупки. Сервер не запущен");
    }else{    
-
+    
    try{
-
+    ustat = uustat;
    var shopballs = await bd.SBallsGet(body.object.peer_id);   
    let idx = await ustat.findIndex(e => e.uid == body.object.peer_id);
 
