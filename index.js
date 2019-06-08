@@ -19,7 +19,7 @@ async function indexstart(){
 }
 
 
-ballEdd = async function (body){ 
+var ballEdd = async function (body){ 
   var b = JSON.parse(body);
   console.log(b.uid);
   var shopballs = await bd.SBallsGet(b.uid);
@@ -28,7 +28,7 @@ ballEdd = async function (body){
   console.log(shopballs.balls);
 }
 
-by = async function (body){
+var by = async function (body){
 
  var uustat = await pl.Ustat();
  if (uustat.length !== 0){
