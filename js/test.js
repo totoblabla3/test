@@ -83,7 +83,6 @@ var WidgetUptateLoop = async function(){
 };
 
 var start = async function (){
-await vk.Auch(); 
 await vk.PostsGet();  
 //bd.SBallsRewrite([{uid: "0000", balls: 0}]);             
 await vk.UsersGet(); 

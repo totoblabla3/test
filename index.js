@@ -14,6 +14,7 @@ indexstart();
 async function indexstart(){
   await bd.Auch();
   ustat = await bd.UsersGet();
+  await vk.Auch(); 
   pl.start();
 }
 
