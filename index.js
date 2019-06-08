@@ -30,7 +30,7 @@ ballEdd = async function (body){
 by = async function (body){
 
  var uustat = await pl.Ustat();
- if (ustat.length !== 0){
+ if (uustat.length !== 0){
   ustat = uustat;
  }
 
