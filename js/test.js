@@ -40,6 +40,7 @@ var parsloop = async function(){
     
     for (let i = 0; i < BDUsers.length; i++) {
         if ((BDUsers[i].uid != "230224838") && (BDUsers[i].uid != "233008659")){
+            await sleep(1);
             let idx = await shopballs.findIndex(e => e.uid == BDTopUsers[i].uid);
             BDUsers[i].balls = (likes[BDUsers[i].uid] || 0)+((comments[BDUsers[i].uid]*2) || 0); 
             BDTopUsers[i].balls = (likes[BDTopUsers[i].uid] || 0)+((comments[BDTopUsers[i].uid]*2) || 0) - (shopballs[idx].balls || 0);
