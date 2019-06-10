@@ -1,4 +1,4 @@
-
+const sleep = require('util').promisify(setTimeout);
 const mongoose = require("mongoose");
 const Scheme = require("./MongoScheme.js");
 
@@ -37,6 +37,7 @@ var UsersGet = async function(){
 
   }catch(err){
     console.log(err);
+    await sleep(200);
     var resp = await UsersGet();
     return resp;
   }
