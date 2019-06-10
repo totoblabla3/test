@@ -137,7 +137,7 @@ app.post('/', function (req, res) {
 });
 
 app.get('/', function (req, res) {
-  res.render('start',{users:bd.topuser()});
+  res.render('start',{users:pl.topuser()});
 });
 
 app.get('/rules', function (req, res) {

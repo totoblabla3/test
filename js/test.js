@@ -16,7 +16,7 @@ var parsloop = async function(){
     await sleep(20000);
     var startdate = new Date();
     var posts = await bd.PostsGet();
-    var Users = await bd.UsersGet();  
+    var BDUsers = await bd.UsersGet();  
     var shopballs = await bd.SBallsGet("All");
     var {good, clike} = await vk.CommentsGet(posts);
     var liker = await vk.PostLikesGet(posts,"post");
@@ -37,23 +37,23 @@ var parsloop = async function(){
         await sleep(100);
     }
     
-    for (let i = 0; i < Users.length; i++) {
-        if ((Users[i].uid != "230224838") && (Users[i].uid != "233008659")){
-            Users[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0); 
+    for (let i = 0; i < BDUsers.length; i++) {
+        if ((BDUsers[i].uid != "230224838") && (BDUsers[i].uid != "233008659")){
+            BDUsers[i].balls = (likes[BDUsers[i].uid] || 0)+((comments[BDUsers[i].uid]*2) || 0); 
         }     
     }
     
-    Usersstat = Users;
+    Usersstat = BDUsers;
 
-    //var bdrespones = await bd.UsersRewrite(Users);
-   // if (bdrespones !== "bd_UsersRewrite_ok"){console.log("ERROR7: bd.UsersRewrite");}
+    var bdrespones = await bd.UsersRewrite(BDUsers);
+    if (bdrespones !== "bd_UsersRewrite_ok"){console.log("ERROR7: bd.UsersRewrite");}
 
-    Users.sort(function(a, b){return b.balls-a.balls;});
+    BDUsers.sort(function(a, b){return b.balls-a.balls;});
     var tu = [];
-    for (let i = 0; i < (50 || Users.length); i++) {
-        tu[i] = Users[i];  
+    for (let i = 0; i < (50 || BDUsers.length); i++) {
+        tu[i] = BDUsers[i];  
     }
-    bd.newtopuser(tu); 
+    
     TopUsers = tu;      
 
     var date = new Date();
@@ -95,3 +95,4 @@ WidgetUptateLoop();
 module.exports.parsloop = parsloopstate;
 module.exports.start = start;
 module.exports.Ustat = function(){return Usersstat;};
+module.exports.topuser = function(){return TopUsers;};
