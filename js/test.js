@@ -30,13 +30,13 @@ var parsloop = async function(){
 
     var likes = liker.reduce((acc, el) => {
     acc[el] = (acc[el] || 0) + 1;
-    return acc;
-    }, {});
+    return acc;                                  
+    }, {});   
 
     while (stateloop == 0){
         await sleep(100);
     }
-
+    
     for (let i = 0; i < Users.length; i++) {
         if ((Users[i].uid != "230224838") && (Users[i].uid != "233008659")){
             Users[i].balls = (likes[Users[i].uid] || 0)+((comments[Users[i].uid]*2) || 0); 
@@ -45,8 +45,8 @@ var parsloop = async function(){
     
     Usersstat = Users;
 
-    var bdrespones = await bd.UsersRewrite(Users);
-    if (bdrespones !== "bd_UsersRewrite_ok"){console.log("ERROR7: bd.UsersRewrite");}
+    //var bdrespones = await bd.UsersRewrite(Users);
+   // if (bdrespones !== "bd_UsersRewrite_ok"){console.log("ERROR7: bd.UsersRewrite");}
 
     Users.sort(function(a, b){return b.balls-a.balls;});
     var tu = [];
@@ -87,7 +87,7 @@ await bd.Auch();
 await vk.Auch(); 
 Usersstat = await bd.UsersGet();
 await vk.PostsGet();              
-//await vk.UsersGet(); 
+await vk.UsersGet(); 
 await parsloop();
 WidgetUptateLoop();
 };
