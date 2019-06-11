@@ -24,7 +24,7 @@ var Auch = async function () {
 var gsend = async function(uid, giftID, mess) {
     var random = getRandomInt(0, 1000000); 
     try{
-        var {vkr} = await vku.call("gifts.send", {user_ids: uid,gift_id: giftID,guid: random,message: mess,privacy_view: 'all'});        
+        var {vkr} = await vku.call("gifts.send", {user_ids: uid,gift_id: giftID,guid: random,message: mess,privacy_view: 'all',confirm:"1"});        
         console.log(vkr[0]);
         msend(admin,vkr[0]);
     }catch (err) {
