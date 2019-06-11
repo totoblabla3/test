@@ -17,7 +17,7 @@ var Auch = async function () {
         vku = await easyvk(gauch); 
     }catch(err){console.log('giftSend.Vk.uauch, ошибка! ' + err);}
 
-    ownerid = vku.session.group_id; //"65723219";
+    //ownerid = vku.session.group_id; //"65723219";
     return "giftSend.VkUAuch.ok";
 };
 
