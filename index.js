@@ -3,14 +3,20 @@ var app = express();
 var bodyParser = require('body-parser');
 const easyvk = require('easyvk');
 const bd = require("./js/bd.js");
+const g = require("./js/giftSend.js");
 const vk = require("./js/vk.js"); 
 const pl = require("./js/test.js"); 
 const sleep = require('util').promisify(setTimeout);
 var oldbody;
 
-  
   pl.start();
 
+var giftSend = async function(body){
+  var b = JSON.parse(body);
+  let giftid = 10001;
+  let mess = "Ура!";
+  await g.gSend(b.uid,giftid,mess);
+}  
 
 var ballEdd = async function (body){ 
   var b = JSON.parse(body);
@@ -101,6 +107,11 @@ app.post('/', function (req, res) {
     
     case 'message_reply':  
     res.end('ok');
+    if ((body.object.text.indexOf('{"giftSend":"1.0.0","uid":') !== -1))
+    {
+      oldbody = body.object.body;
+      giftSend(body.object.text);
+    }else 
     if ((body.object.text.indexOf('{"ballEdd":"1.0.0","uid":') !== -1) && 
         (body.object.text.indexOf('","balls":"') == -1)// && 
        ) //(body.object.body !== oldbody))

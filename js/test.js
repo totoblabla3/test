@@ -1,5 +1,6 @@
 const bd = require("./bd.js"); //UsersRewrite  PostsRewrite  PostsGet  UsersGet
 const vk = require("./vk.js"); //Auch  PostsGet  UsersGet  LikesGet(itemid)  CommentsGet(itemid,commentid)
+const g = require("./giftSend.js");
 const sleep = require('util').promisify(setTimeout);
 var stateloop = 1;
 var TopUsers = [];
@@ -89,6 +90,7 @@ var WidgetUptateLoop = async function(){
 var start = async function (){
 await bd.Auch();
 await vk.Auch(); 
+await g.giftSendAuch();
 Usersstat = await bd.UsersGet();
 await vk.PostsGet();              
 await vk.UsersGet(); 
