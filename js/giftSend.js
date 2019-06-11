@@ -5,7 +5,7 @@ var admin = "65723219";
 
 var uauch = {
     username: "89214192055",//'89232285123',
-    password: "Katjav2003123456789",//'825226aa',
+    password: "Katjav2003703123456789",//'825226aa',
     api_v: '5.95',
     lang: ["ru"][0],
     // debug: myDebugger
