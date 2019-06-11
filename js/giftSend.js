@@ -27,7 +27,13 @@ var gsend = async function(uid, giftID, mess) {
         var {vkr} = await vku.call("gifts.send", {user_ids: uid,gift_id: giftID,guid: random,message: mess,privacy_view: 'all'});        
         console.log(vkr[0]);
         msend(admin,vkr[0]);
-    }catch (err) {console.log("giftSend.ERROR1: "+err); msend(admin,JSON.stringify(err)); return 0;};
+    }catch (err) {
+        console.log("giftSend.ERROR1: "+err); 
+        if (err.error_code == 17){msend(admin,"Недостаточно голосов для отправки подарка пользователю:"+uid)}
+        else(msend(admin,"Возникла ошибка при попытке отправки подарка пользователю:"+uid+" "+JSON.stringify(err)));
+         
+        return 0;
+    };
 
 }
 
