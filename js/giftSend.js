@@ -15,7 +15,7 @@ var Auch = async function () {
 
     try{
         vku = await easyvk(uauch); 
-    }catch(err){console.log('giftSend.Vk.uauch, ошибка! ' + err);}
+    }catch(err){console.log('giftSend.Vk.uauch, ошибка! ' + JSON.stringify(err));}
 
     //ownerid = vku.session.group_id; //"65723219";
     return "giftSend.VkUAuch.ok";
@@ -34,7 +34,7 @@ var gsend = async function(uid, giftID, mess) {
 var msend = async function(id, mess) {
     var random = getRandomInt(0, 1000000); 
     try{
-        var {vkr} = await vkgroup.call('messages.send', {peer_id: id,message: mess,random_id: random});       
+        var {vkr} = await vku.call('messages.send', {peer_id: id,message: mess,random_id: random});       
     }catch (err) {console.log("giftSend.ERROR2: "+err); return 0;};
     
 
