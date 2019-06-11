@@ -27,7 +27,7 @@ var gsend = async function(uid, giftID, mess) {
         var {vkr} = await vku.call("gifts.send", {user_ids: uid,gift_id: giftID,guid: random,message: mess,privacy_view: 'all'});        
         console.log(vkr[0]);
         msend(admin,vkr[0]);
-    }catch (err) {console.log("giftSend.ERROR1: "+err); msend(admin,err); return 0;};
+    }catch (err) {console.log("giftSend.ERROR1: "+err); msend(admin,JSON.stringify(err)); return 0;};
 
 }
 
