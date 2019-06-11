@@ -1,7 +1,7 @@
 const easyvk = require('easyvk');
 const sleep = require('util').promisify(setTimeout);
 var vku;
-var admin = "65723219";
+var admin = "-65723219";
 
 var uauch = {
     username: "89214192055",//'89232285123',
