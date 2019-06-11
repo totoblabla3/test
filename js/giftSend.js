@@ -14,7 +14,7 @@ var uauch = {
 var Auch = async function () {
 
     try{
-        vku = await easyvk(gauch); 
+        vku = await easyvk(uauch); 
     }catch(err){console.log('giftSend.Vk.uauch, ошибка! ' + err);}
 
     //ownerid = vku.session.group_id; //"65723219";
