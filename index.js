@@ -14,7 +14,7 @@ var oldbody;
 var giftSend = async function(body){
   var b = JSON.parse(body);
   let giftid = 10001;
-  let mess = "Ура!";
+  let mess = "Хаха, ты впускаешь Венома в свой мозг! Удачи!";
   
   await g.gSend(b.uid,giftid,mess);
 }  
