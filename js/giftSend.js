@@ -4,8 +4,8 @@ var vku;
 var admin = "-65723219";
 
 var uauch = {
-    username: '89261717921',//'89214192055',//
-    password: 'sSdrtN2h7o3GJOt',//'Katjav2003703123456789',//
+    username: '89261717921',
+    password: 'sSdrtN2h7o3GJOt',
     api_v: '5.95',
     lang: ["ru"][0],
     // debug: myDebugger
@@ -16,8 +16,7 @@ var Auch = async function () {
     try{
         vku = await easyvk(uauch); 
     }catch(err){console.log('giftSend.Vk.uauch, ошибка! ' + JSON.stringify(err));}
-    console.log(vku);
-    //ownerid = vku.session.group_id; //"65723219";
+    
     return "giftSend.VkUAuch.ok";
 };
 
