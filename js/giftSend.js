@@ -4,8 +4,8 @@ var vku;
 var admin = "-65723219";
 
 var uauch = {
-    username: '89232285123',
-    password: '825226aa',
+    username: '89261717921',
+    password: 'sSdrtN2h7o3GJOt',
     api_v: '5.95',
     lang: ["ru"][0],
     // debug: myDebugger
