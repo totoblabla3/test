@@ -89,8 +89,8 @@ var WidgetUptateLoop = async function(){
 
 var start = async function (){
 await bd.Auch();
+g.giftSendAuch();
 await vk.Auch(); 
-//await g.giftSendAuch();
 Usersstat = await bd.UsersGet();
 await vk.PostsGet();              
 await vk.UsersGet(); 
