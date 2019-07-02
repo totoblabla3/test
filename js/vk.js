@@ -31,7 +31,7 @@ var sauch = {
   // debug: myDebugger
 };
 var gauch = {
-  access_token: '4be27b07815a32a956019bdd24d24b6ddc83ba2cf67848a645d394569a4ec4e1100c13f91fbeb79b58f34', //'ce04b5a697bd87efbcc7ce44fe3624afbd9a95d490eb2dc5246f9e34cd5a63f172bd7fbbd406bde104fe4', //
+  access_token: '4663ce3a57ef0aa172fd057b1251860467e15bfdd37c94756bb1bf1674cf903d02bf11c9e4765b297213e', //'ce04b5a697bd87efbcc7ce44fe3624afbd9a95d490eb2dc5246f9e34cd5a63f172bd7fbbd406bde104fe4', //
   api_v: '5.95',
   lang: ["ru"][0],
   //debug: myDebugger
