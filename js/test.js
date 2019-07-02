@@ -76,7 +76,7 @@ var WidgetUptateLoop = async function(){
     for (let i = 0; i < 3; i++) {
         Top3[i] = TopUsers[i];   
     }
-    
+     
     if (Top3.join(',') !== Top3old.join(',')){
         Top3old = Top3; 
         await vk.WidgetUpdate(Top3);
@@ -91,6 +91,7 @@ var start = async function (){
 g.giftSendAuch();
 await bd.Auch();
 await vk.Auch(); 
+console.log("auch ok");
 Usersstat = await bd.UsersGet();
 await vk.PostsGet();              
 await vk.UsersGet(); 
