@@ -89,7 +89,7 @@ var WidgetUptateLoop = async function(){
 
 var start = async function (){
     
-g.giftSendAuch();
+await g.giftSendAuch();
 console.log("------->1");
 await bd.Auch();
 console.log("------->2");
