@@ -90,12 +90,8 @@ var WidgetUptateLoop = async function(){
 var start = async function (){
     
 await g.giftSendAuch();
-console.log("------->1");
 await bd.Auch();
-console.log("------->2");
 await vk.Auch(); 
-console.log("------->3");
-console.log("auch ok");
 Usersstat = await bd.UsersGet();
 await vk.PostsGet();              
 await vk.UsersGet(); 
