@@ -44,7 +44,7 @@ var Auch = async function () {
   } catch (err) {
     console.log("AuchErr_1 " + err)
   }
-  try {
+  try {  
     vkseq = await easyvk(sauch);
   } catch (err) {
     console.log("AuchErr_2 " + err)
