@@ -28,14 +28,14 @@ var sauch = {
   access_token: 'd4526fbdd4526fbdd4526fbda7d43877b4dd452d4526fbd8892599a407521fd05d99a7a',
   api_v: '5.95',
   lang: ["ru"][0],
-  debug: myDebugger
+  // debug: myDebugger
 };
 var gauch = {
   access_token: '4663ce3a57ef0aa172fd057b1251860467e15bfdd37c94756bb1bf1674cf903d02bf11c9e4765b297213e', //'ce04b5a697bd87efbcc7ce44fe3624afbd9a95d490eb2dc5246f9e34cd5a63f172bd7fbbd406bde104fe4', //
   api_v: '5.95',
   lang: ["ru"][0],
   authType: easyvk.GROUP_AUTH_TYPE,
-  debug: myDebugger
+  // debug: myDebugger
 };
 
 var Auch = async function () {
