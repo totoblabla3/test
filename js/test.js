@@ -89,14 +89,14 @@ var WidgetUptateLoop = async function(){
 
 var start = async function (){
     
-// await g.giftSendAuch();
+await g.giftSendAuch();
 await bd.Auch();
 await vk.Auch(); 
-// Usersstat = await bd.UsersGet();
-// await vk.PostsGet();              
-// await vk.UsersGet(); 
-// await parsloop();
-// WidgetUptateLoop();
+Usersstat = await bd.UsersGet();
+await vk.PostsGet();              
+await vk.UsersGet(); 
+await parsloop();
+WidgetUptateLoop();
 };
 
 module.exports.parsloop = parsloopstate;
